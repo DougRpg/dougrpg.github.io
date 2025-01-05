@@ -3596,3 +3596,27 @@ body.is-menu-visible #menu .close {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+h2 {
+	background-color: rgba(0, 255, 0, 0.4);
+	/* Optional: changes the text color to white for better contrast */
+	padding: 10px;
+	/* Optional: adds padding for spacing around the text */
+	margin: 0;
+	/* Optional: removes any default margin */
+	width: 100%;
+	/* Ensures it spans the entire width of its container */
+}
