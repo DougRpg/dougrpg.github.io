@@ -115,6 +115,28 @@
 		dialog.addEventListener('close', () => shots[current].focus());
 	}
 
+	/* Contador de visitas no rodapé: total do site no GoatCounter.
+	   O endereço vem do script do GoatCounter que está no <head> de cada página. */
+	const counter = document.querySelector('[data-hit-counter]');
+	const goatcounter = document.querySelector('script[data-goatcounter]');
+
+	if (counter && goatcounter) {
+		const base = goatcounter.dataset.goatcounter.replace(/\/count$/, '');
+		fetch(`${base}/counter/TOTAL.json`)
+			.then((response) => (response.ok ? response.json() : Promise.reject(response.status)))
+			.then(({ count }) => {
+				const digits = String(count).replace(/\D/g, ''); // "1,234" -> "1234"
+				if (!digits) return;
+				const cells = [...digits.padStart(6, '0')].map((d) => `<span>${d}</span>`).join('');
+				counter.innerHTML = `
+					<span aria-hidden="true">Visitantes</span>
+					<span class="hit-counter__digits" aria-hidden="true">${cells}</span>
+					<span class="sr-only">${Number(digits).toLocaleString('pt-BR')} visitantes</span>`;
+				counter.hidden = false;
+			})
+			.catch(() => { /* se o GoatCounter não responder, o contador continua escondido */ });
+	}
+
 	/* Índice da página: destaca a seção que está sendo lida */
 	const toc = document.querySelector('.toc');
 
