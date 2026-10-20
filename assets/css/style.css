@@ -948,6 +948,17 @@ body:has(.prose)::after {
 	animation: nudge 0.6s steps(2) infinite;
 }
 
+/* Nos cards menores fica só a seta, para o status caber na mesma linha
+   (o texto "Ver projeto" continua no HTML para leitores de tela) */
+.card:not(.card--featured) .card__cta {
+	font-size: 0;
+}
+
+.card:not(.card--featured) .card__cta::after {
+	width: 8px;
+	height: 14px;
+}
+
 /* Seta de seleção apontando para o card, como num menu de RPG */
 @media (hover: hover) and (min-width: 720px) {
 	.card::before {
@@ -1114,6 +1125,10 @@ body:has(.prose)::after {
 		grid-template-columns: minmax(0, 1fr) 360px;
 		gap: 3rem;
 	}
+}
+
+.page-section + .page-section {
+	margin-top: 3.5rem;
 }
 
 .project-title {

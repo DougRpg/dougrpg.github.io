@@ -5,12 +5,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Shadowrun — Tradução PT-BR | DougRPG</title>
-	<meta name="description" content="Projeto de tradução do Shadowrun (Super Nintendo) para o português.">
+	<meta name="description" content="Tradução do Shadowrun (Super Nintendo) para o português. Versão Beta 2 disponível para download.">
 	<meta name="theme-color" content="#0a0b1e">
 	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="DougRPG">
 	<meta property="og:title" content="Shadowrun — Tradução PT-BR">
-	<meta property="og:description" content="Projeto de tradução do Shadowrun (Super Nintendo) para o português.">
+	<meta property="og:description" content="Tradução do Shadowrun (Super Nintendo) para o português. Versão Beta 2 disponível para download.">
 	<meta property="og:image" content="https://dougrpg.github.io/images/shadowrun.png">
 	<meta property="og:url" content="https://dougrpg.github.io/shadowrun.html">
 	<meta name="twitter:card" content="summary_large_image">
@@ -56,7 +56,8 @@
 			<div class="project-head">
 				<div>
 					<h1 class="project-title">Shadowrun</h1>
-					<p class="project-lead">Esta é a página do meu projeto de tradução do Shadowrun para o português.</p>
+					<p class="project-lead">Esta é a tradução do jogo Shadowrun de Super Nintendo para o português.</p>
+					<p>Esta é a minha primeira tradução lançada. Esta versão ainda é Beta, porém 100% jogável.</p>
 				</div>
 
 				<aside class="rpg-window ficha" aria-label="Ficha do projeto">
@@ -64,12 +65,32 @@
 					<dl class="stats">
 						<div><dt>Plataforma</dt><dd>Super Nintendo</dd></div>
 						<div><dt>Idioma</dt><dd>Português</dd></div>
+						<div><dt>Versão</dt><dd class="is-live">Beta 2</dd></div>
 					</dl>
-					<span class="btn btn--block btn--disabled" aria-disabled="true">Download em breve</span>
+					<a class="btn btn--block btn--download" href="https://github.com/DougRpg/shadowrun/raw/master/shadowrun_ptbr.rar">Baixar tradução</a>
+					<ul class="menu">
+						<li><a href="https://github.com/DougRpg/shadowrun" target="_blank" rel="noopener">Repositório no GitHub</a></li>
+					</ul>
 				</aside>
 			</div>
 
-			<section id="screenshots">
+			<section id="patch" class="prose page-section">
+				<h2>Como aplicar o patch</h2>
+
+				<p>É necessário usar o Rom <strong>Shadowrun (U) [!]</strong> com CRC32 <code>3F34DFF0</code>.</p>
+
+				<p>Existem duas formas de aplicar o patch, usando o <strong>IPS</strong> ou o <strong>BPS</strong>.</p>
+
+				<p>O IPS é a forma mais comum, porém menos segura, pois não checa se a Rom que você está usando é a correta.
+					Pra usar o IPS deve-se usar qualquer ferramenta de IPS, como o <a
+						href="https://www.romhacking.net/utilities/240/" target="_blank" rel="noopener">LunarIPS</a>.</p>
+
+				<p>O BPS é bem mais seguro, pois garante que a Rom é a correta e evita problemas na hora de jogar. É necessário
+					usar a ferramenta <a href="https://www.romhacking.net/utilities/893/" target="_blank" rel="noopener">Beat</a>
+					pra aplicar o BPS.</p>
+			</section>
+
+			<section id="screenshots" class="page-section">
 				<h2 class="heading-bar">Screenshots</h2>
 				<ul class="gallery">
 					<li><a class="crt" href="images/shadowrun001.png" data-lightbox><img class="pixel" src="images/shadowrun001.png" alt="Shadowrun em português — screenshot 1" width="256" height="224" loading="lazy"></a></li>
