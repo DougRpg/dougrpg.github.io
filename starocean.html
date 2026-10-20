@@ -1,521 +1,499 @@
-<!DOCTYPE HTML>
-
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
-	<title>Star Ocean</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" />
-	</noscript>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Star Ocean — Tradução PT-BR | DougRPG</title>
+	<meta name="description" content="Tradução do Star Ocean (Super Nintendo) para o português: download do patch V1-BETA, como aplicar, compatibilidade e a história da tradução.">
+	<meta name="theme-color" content="#0a0b1e">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="DougRPG">
+	<meta property="og:title" content="Star Ocean — Tradução PT-BR">
+	<meta property="og:description" content="Tradução do Star Ocean (Super Nintendo) para o português. Versão V1-BETA disponível para download.">
+	<meta property="og:image" content="https://dougrpg.github.io/images/starocean2.jpg">
+	<meta property="og:url" content="https://dougrpg.github.io/starocean.html">
+	<meta name="twitter:card" content="summary_large_image">
+	<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Press+Start+2P&family=VT323&display=swap">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script src="assets/js/site.js" defer></script>
 </head>
 
-<body class="is-preload">
-	<!-- Wrapper -->
-	<div id="wrapper">
+<body>
+	<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-		<!-- Header -->
-		<header id="header">
-			<div class="inner">
+	<!-- Cabeçalho -->
+	<header class="site-header">
+		<div class="container site-header__inner">
+			<a class="logo" href="index.html" aria-label="DougRPG — início">
+				<img class="logo__mark" src="assets/img/logo.svg" alt="" width="28" height="28">
+				<span class="logo__text">DougRPG</span>
+			</a>
+			<nav class="site-nav" aria-label="Principal">
+				<a href="index.html#projetos">Projetos</a>
+				<a href="https://github.com/DougRpg" target="_blank" rel="noopener">GitHub</a>
+			</nav>
+		</div>
+		<div class="snes-stripe" aria-hidden="true"></div>
+	</header>
 
-				<!-- Nav -->
-				<nav>
-					<ul>
-						<li><a href="#menu">Menu</a></li>
+	<main id="conteudo" class="page">
+		<div class="container">
+			<a class="back-link" href="index.html#projetos">Voltar aos projetos</a>
+
+			<div class="banner">
+				<div class="banner__glow" style="background-image: url('images/starocean2.jpg')" aria-hidden="true"></div>
+				<div class="banner__frame crt">
+					<img src="images/starocean2.jpg" alt="Arte de Star Ocean com os personagens principais" width="1745" height="863">
+				</div>
+			</div>
+
+			<div class="project-head">
+				<div>
+					<h1 class="project-title">Star Ocean</h1>
+					<p class="project-lead">Tradução do Star Ocean, o RPG da Enix para Super Nintendo, para o português.</p>
+					<p>A versão <strong>V1-BETA</strong> já está disponível. Antes de jogar, veja abaixo como aplicar o patch e quais emuladores são compatíveis.</p>
+				</div>
+
+				<aside class="rpg-window ficha" aria-label="Ficha do projeto">
+					<h2 class="window-title">Status</h2>
+					<dl class="stats">
+						<div><dt>Plataforma</dt><dd>Super Nintendo</dd></div>
+						<div><dt>Chip</dt><dd>S-DD1</dd></div>
+						<div><dt>Idioma</dt><dd>Português</dd></div>
+						<div><dt>Versão</dt><dd class="is-live">V1-BETA</dd></div>
+					</dl>
+					<a class="btn btn--block btn--download" href="https://github.com/DougRpg/StarOcean/releases/download/v1-beta/starocean_ptbr_v1-beta.rar">Baixar tradução</a>
+					<ul class="menu">
+						<li><a href="https://sd2snes.de/files/sd2snes_firmware_v1.11.1rc4.zip">Firmware sd2snes/FxPak Pro <small>v1.11.1rc4</small></a></li>
+						<li><a href="https://github.com/DougRpg/StarOcean" target="_blank" rel="noopener">Repositório no GitHub</a></li>
+						<li><a href="https://github.com/DougRpg/StarOcean/issues" target="_blank" rel="noopener">Reportar bugs</a></li>
 					</ul>
+				</aside>
+			</div>
+
+			<div class="layout">
+				<nav class="rpg-window toc" aria-label="Nesta página">
+					<h2 class="window-title">Menu</h2>
+					<ol class="menu">
+						<li><a href="#lancamento">Lançamento</a></li>
+						<li><a href="#aplicacao">Aplicação do patch</a></li>
+						<li><a href="#compatibilidade">Compatibilidade</a></li>
+						<li><a href="#bugs">Reportando bugs</a></li>
+						<li><a href="#agradecimentos">Agradecimentos</a></li>
+						<li><a href="#historia">História da tradução</a></li>
+						<li><a href="#modo-facil">Patch de modo fácil</a></li>
+						<li><a href="#licenca">Licença de uso</a></li>
+						<li><a href="#screenshots">Screenshots</a></li>
+					</ol>
 				</nav>
 
-			</div>
-		</header>
-
-		<!-- Menu -->
-		<nav id="menu">
-			<h2>Menu</h2>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-			</ul>
-		</nav>
-
-		<!-- Main -->
-		<div id="main">
-			<div class="inner">
-				<h1>Star Ocean</h1>
-				<span class="image main"><img src="images/starocean2.jpg" alt="" /></span>
-
-				<hr>
-				<h1>
-					<span>Download da Tradução:</span>
-					<a href="https://github.com/DougRpg/StarOcean/releases/download/v1-beta/starocean_ptbr_v1-beta.rar"
-						style="color: red;">V1-BETA</a>
-				</h1>
-				<hr>
-
-				<h1>
-					<span>Firmware sd2snes/FxPakPro:</span>
-					<a href="https://sd2snes.de/files/sd2snes_firmware_v1.11.1rc4.zip"
-						style="color: red;">v1.11.1rc4</a>
-				</h1>
-
-				<h2>Lançamento</h2>
-				<p>Primeiramente obrigado pelo interesse na minha tradução do Star Ocean para o português. Este projeto
-					foi feito com muito carinho e dedicação, espero que gostem.
-					Antes de mais nada esta é uma versão <strong><span style="color: red;">BETA</span></strong> da
-					tradução, então pode conter erros e bugs. Com certeza vão aparecer erros de digitação que passaram e
-					que irei corrigindo em versões futuras. Esta primeira versão é pra estar 100% jogável do começo ao
-					fim, mas ainda não é a versão final. Eu não quero mais ficar sozinho testando este jogo, então estou
-					liberando pra vocês testarem e me ajudarem a encontrar erros e bugs, o que vai me ajudar e dar ânimo
-					para chegar na versão final (o que já está bem próximo). Então por favor, se encontrar algum bug,
-					erros de português, gráficos não traduzidos ou qualquer coisa que não esteja de acordo, me avise
-					para que eu possa corrigir.
-					Mais detalhes sobre como reportar bugs e erros estão em uma seção abaixo.</p>
-
-				<p>
-					Este jogo tem muitas combinações de personagens que você pode escolher durante a jornada, e os
-					diálogos mudam, então não cheguei a testar 100% todas as combinações possíveis nessas últimas
-					revisões que fiz, então é possível ter
-					algum erro de diálogo em alguma parte do jogo. Porém o mais comum são os jogadores seguirem o fluxo
-					comum e deixarem o Cius no grupo, o que eu recomendo para quem for jogar pela primeira vez, pois ele
-					é um personagem muito legal. Eu também fiz muitas mudanças de última hora no jogo nesses dias
-					anteriores ao lançamento, e não testei 100% do jogo a cada mudança, então é possível ter algum erro
-					que eu não vi, mas é muito pouco provável que tenha algo quebrado lá pro final do jogo. Mas se tiver
-					algo quebrado me avise que eu corrijo.
-				</p>
-
-				<h2>Aplicação do Patch</h2>
-
-				<p>Primeiramente faça o download do patch através do link acima no início desta página. A tabela abaixo
-					mostra um resumo de cada arquivo dentro do arquivo de patch.</p>
-
-				<table>
-					<tr>
-						<th>Arquivo</th>
-						<th>Descrição</th>
-					</tr>
-					<tr>
-						<td>starocean_dejap_ptbr.bps</td>
-						<td>É o patch <strong>BPS</strong> para ser aplicado na Rom da Dejap.</td>
-					</tr>
-					<tr>
-						<td>starocean_dejap_ptbr.ips</td>
-						<td>É o patch <strong>IPS</strong> para ser aplicado na Rom da Dejap.</td>
-					</tr>
-					<tr>
-						<td>starocean_jp_ptbr.bps</td>
-						<td>É o patch <strong>BPS</strong> para ser aplicado na Rom original japonesa.</td>
-					</tr>
-					<tr>
-						<td>starocean_jp_ptbr.ips</td>
-						<td>É o patch <strong>IPS</strong> para ser aplicado na Rom original japonesa.</td>
-					</tr>
-					<tr>
-						<td>beat.exe</td>
-						<td>Aplicador de patches do formato <strong>BPS</strong>.</td>
-					</tr>
-					<tr>
-						<td>Lunar IPS.exe</td>
-						<td>Aplicador de patches do formato <strong>IPS</strong>.</td>
-					</tr>
-					<tr>
-						<td>Pasta easymode</td>
-						<td>Contém o patch de modo fácil, no formato IPS.</td>
-					</tr>
-					<tr>
-						<td>Pasta super easymode</td>
-						<td>Contém o patch de modo super fácil, no formato IPS.</td>
-					</tr>
-				</table>
-
-
-				<p>Para aplicar o patch você vai precisar de uma cópia da <strong>Rom</strong> do jogo. Você pode
-					encontrar a Rom do jogo facilmente na internet, mas eu não posso fornecer links para download aqui.
-				</p>
-				<p>Existem patches no formato <strong>IPS</strong> e <strong>BPS</strong>, você pode usar o que
-					preferir.
-					Eu recomendo fortemente o uso do <strong>BPS</strong>, pois ele força a aplicação do patch na Rom
-					correta. No arquivo do patch eu coloquei os binários das aplicações que aplicam patches IPS (Lunar
-					Ips) e BPS (Beat). Caso queira baixar por conta, pode baixar o <a
-						href="https://www.romhacking.net/utilities/240/" style="color: yellow;" target="_blank">Lunar
-						Ips aqui</a> e o <a href="https://www.romhacking.net/utilities/893/" style="color: yellow;"
-						target="_blank">Beat
-						aqui</a>.</p>
-
-				<p>Coloquei também patches para serem usados com a versão original japonesa do Star Ocean, e também com
-					a versão em inglês feita pela <strong>DeJap</strong>. A tabela abaixo mostra qual é o CRC32 de cada
-					versão do jogo (pode ser visto no WinRAR por exemplo), para que você veja qual Rom o patch foi feito
-					para ser aplicado.</p>
-
-				<table>
-					<tr>
-						<th>Versão</th>
-						<th>CRC32</th>
-					</tr>
-					<tr>
-						<td>Original Japonesa</td>
-						<td>3DBDFDBF</td>
-					</tr>
-					<tr>
-						<td>DeJap</td>
-						<td>6BA9E08D</td>
-					</tr>
-				</table>
-
-
-				<h2>Compatibilidade</h2>
-				<p>Esta tradução foi feita com o hardware real em mente, focando nos emuladores da família Bsnes, que
-					são o <strong>Bsnes, Higan e Ares</strong>. O jogo foi testado e está 100% jogável nestes
-					emuladores em suas últimas versões no começo de 2025. O jogo também funciona no
-					<strong>Snes9x</strong>, mas testei apenas da versão <strong>1.56</strong> em diante. Recomendo a
-					última versão <strong>1.63</strong>, que é a última versão no momento do lançamento.
-				</p>
-
-				<p>Também funciona
-					no hardware real usando o <strong>sd2snes</strong> ou <strong>FxPak Pro</strong>, que são flashcards
-					para o Super Nintendo que
-					suportam o chip S-DD1. Para esses flashcards é necesário usar a versão <strong>1.11.1rc4</strong> ou
-					superior do firmware, que arruma o mapeamento de memória do jogo. O link deste firmware está no
-					início desta página.
-				</p>
-				<p>Também recomendo fortemente o uso do <strong>Retroarch</strong> com o core do <strong>Bsnes</strong>
-					ou do <strong>Snes9x</strong>, pois são compatíveis e possuem muitas opções de configuração, como a
-					utilização de filtros gráficos, shaders, etc. O Ares também é altamente recomendável pois é o
-					emulador atual da família Bsnes e suporta vários shaders como o Retroarch.</p>
-				<p>O Star Ocean utiliza o chip <strong>S-DD1</strong>, então é necessário um emulador que suporte este
-					chip e faça o mapeamento de memória de forma correta. Esta tradução foi complexa de fazer, e expande
-					o jogo original, então é possível que emuladores mais antigos não suportem a tradução. No próprio
-					Retroarch eu vi que alguns cores mais antigos do Snes9x, como o Snes9x 2005, não
-					funcionam com a tradução. O mesmo vale pro Bsnes 2014, que deve ter algum bug, uma vez que versões
-					mais antigas do Bsnes funcionam. Eu até poderia fazer um pull request no repositório desses cores
-					que não funcionam, mas se você utiliza o Retroarch é só baixar o core oficial que vai funcionar,
-					então não faz sentido usar um core antigo com esse jogo.</p>
-				<p>Outros emuladores, como o <strong>Zsnes</strong>, provavelmente não funcionam com a tradução, então
-					não recomendo o uso deles.</p>
-				<p>Se você for jogar no <strong>PC</strong> apenas use as últimas versões dos emuladores da família
-					Bsnes (principalmente o Ares) e Snes9x, ou o Retroarch com o core do Bsnes ou do Snes9x.</p>
-
-				<p>Em <strong>celular Android</strong> eu testei no Retroarch e naquele Snes9x EX+ e funciona
-					perfeitamente.</p>
-
-				<p>Hoje em dia existe uma infinidade de emuladores e dispositivos que rodam jogos de Super Nintendo,
-					então dá pra achar um que funcione com a tradução, nem que for um celular rodando Retroarch. Se a
-					vontade é jogar em algum aparelho mais antigo que tenha um emulador incompatível que não dê pra
-					atualizar, por enquanto não tem muito o que fazer, e a opção é jogar em algo que dê pra colocar um
-					emulador mais novo.</p>
-
-				<p>A princípio também daria pra rodar no cartucho original, fazendo os ajustes necessários, mas não
-					testei e não tenho como testar, então não posso garantir que funcione, mas provavelmente sim pois
-					funciona no próprio console com o sd2snes/FxPakPro. Se alguém testar e funcionar me
-					avise que eu coloco aqui.</p>
-
-				<h2>Reportando Bugs e Erros</h2>
-
-				<p>Se você encontrar algum bug, erro de português, gráficos não traduzidos ou qualquer coisa que não
-					esteja de acordo, o melhor lugar pra reportar é na <strong><a
-							href="https://github.com/DougRpg/StarOcean/issues" style="color: yellow;"
-							target="_blank">seção de issues do
-							repositório do Github</a></strong>. Lá você pode criar um novo issue e descrever o problema
-					detalhadamente, e se possível anexar uma imagem do problema. Se você não tiver uma conta no Github
-					pode criar uma gratuitamente, e é bem simples de fazer. Se você não quiser criar uma conta no Github
-					pode enviar o problema em algum comentário de um vídeo meu no Youtube, passando por exemplo o texto
-					que está com problema que aí eu consigo identificar o problema e corrigir. Mas nos comentários do
-					Youtube é mais difícil de eu ver, então o ideal é criar um issue no Github.</p>
-
-				<p>Pra criar uma issue entre no link acima ou no <a href="https://github.com/DougRpg/StarOcean"
-						style="color: yellow;" target="_blank">repositório do Github</a>, clique em
-					<strong>Issues</strong>, como dá pra ver na imagem abaixo:
-				</p>
-
-				<span class="image main"><img src="images/starocean_help1.png" alt="" style="width: 40%;" /></span>
-
-				<p>Depois clique no botão <strong>New Issue</strong> no canto superior direito, como dá pra ver na
-					segunda imagem abaixo:</p>
-
-				<span class="image main"><img src="images/starocean_help2.png" alt="" /></span>
-
-				<p>Depois é só preencher o formulário com o título e a descrição do problema.</p>
-
-				<h2>Participantes e agradecimentos</h2>
-				<p>Todo o romhacking e tradução das mudanças para o português foram feitas por mim,
-					<strong>DougRPG</strong>.
-				</p>
-
-				<p>Esta tradução foi baseada na tradução em inglês feita pela <strong><a
-							href="http://dejap.eludevisibility.org/" style="color: yellow;"
-							target="_blank">DeJap</a></strong>, principalmente do
-					<strong>Dark Force</strong>, que fez a maior parte das mudanças no assembly que eu fiquei centenas
-					de horas debugando e alterando.
-					A Dejap fez um trabalho absurdo e incrível, isso há mais de 20 anos atrás. Queria um dia chegar
-					perto do talento desse pessoal.
-				</p>
-
-				<p>Também tive ajuda do <strong><a href="https://magno.romhackhispano.org/" style="color: yellow;"
-							target="_blank">
-							Magno</a></strong>, responsável pela tradução pro espanhol, que me enviou
-					algumas documentações que ele fez de algumas partes do código, principalmente dos menus, e que me
-					ajudaram imensamente em várias mudanças que tive que fazer e me pouparam vários meses de trabalho. O
-					Magno é um ponto fora da curva no quesito programação.</p>
-
-				<p>Também agradeço ao <strong>Byuu/Near</strong> (que já faleceu) e que é o desenvolvedor dos emuladores
-					da família do
-					Bsnes, Higan e Ares, que são os melhores emuladores de Super Nintendo (e de vários outros sistemas)
-					que existem. Sem o trabalho
-					dele a cena de emulação de Super Nintendo estaria anos no passado. Eu utilizei na tradução dois
-					debuggers feitos por ele, e também o assembler Bass. E o formato de patch BSP também é dele. Sem
-					essas ferramentas não teria conseguido
-					fazer nada. Ele também me ajudou a entender o chip S-DD1, que é o chip de compressão de gráficos do
-					Star Ocean, e que foi um dos maiores desafios da tradução. Ele também foi um dos pilares da tradução
-					do Tengai Makyou Zero pro inglês que eu participei. Obrigado Byuu/Near, você fez um trabalho
-					incrível e mudou a cena de emulação pra sempre.</p>
-
-				<p>Falando em S-DD1, agradeço ao <strong>Andreas Naive</strong>, que é uma das pessoas que conseguiu
-					desvendar o
-					algoritmo do S-DD1 e fez um codec que consegui ter acesso e compilar, o que me possibilitou fazer as
-					alterações dos gráficos e recomprimir de volta pro formato original.</p>
-
-				<p>Também agradeço ao <strong>Ikari</strong>, desenvolvedor dos flashcards <a
-						href="https://krikzz.com/our-products/cartridges/fxpak-pro.html" style="color: yellow;"
-						target="_blank">sd2snes e FxPak Pro</a>, que arrumou o mapeamento de memória do Star Ocean no
-					firmware, permitindo que o jogo funcione perfeitamente no hardware real.</p>
-
-				</p>
-
-				</p>
-				Sem o trabalho da DeJap, Byuu, Andreas Naive e do Magno esta tradução não teria sido possível. O que eu
-				fiz aqui não é nada comparado ao que esse pessoal fez. E agradeço também ao pessoal da Enix e Tri-Ace,
-				que fizeram esta obra prima que é o Star Ocean. Obrigado a todos.
-				</p>
-
-				<h2>História da Tradução</h2>
-
-				<p>Comecei esta tradução há uns 10 atrás mais ou menos, lá pra 2014. Naquela época estava começando
-					ainda no mundo do romhacking, então muita coisa fui aperfeiçoando ao longo do tempo. As ferramentas
-					pra esse jogo eu fiz em QT usando C++, mas depois em outro jogos passei a usar Python, o que achei
-					bem melhor pra romhacking. Esse jogo tem vários blocos de texto com mais de um tipo de compressão,
-					então o código das ferramentas ficou bem grande e não tive coragem de portar tudo pra Python
-					posteriormente.</p>
-
-				<p>Cada projeto eu coloco em uma pasta separada e acabei de ver aqui que no lançamento da tradução
-					do Star Ocean a pasta do jogo está com 2.64GB, de tanta coisa que fui experimentando nestes 10 anos.
-				</p>
-
-				<p>Apesar de ter levado uns 10 anos pra terminar esta tradução, a maior parte do tempo foi
-					procrastinação e acontecimentos da vida, pois se tivesse trabalhado de forma consistente, fazendo um
-					pouco por semana, teria levado uns 2 ou 3 anos. Às vezes ficava meses sem mexer no projeto, e como
-					esta tradução tem muito código assembly criado, toda vez que voltava tinha que relembrar parte do
-					que tinha
-					feito, o que atrasava ainda mais o projeto, pois voltar pra código assembly é muito complicado e
-					demora pra relembrar. Por sorte eu sempre fiz em blocos fechados de trabalho, então era raro ter que
-					mudar uma parte que já tinha finalizado, mas aconteceu várias vezes. O pessoal da Dejap fez muito
-					trabalho em um curto
-					período, mas vendo <a href="http://dejap.eludevisibility.org/" style="color: yellow;"
-						target="_blank">
-						aqui no antigo site da Dejap</a> dá pra ver o depoimento do Dark Force no penúltimo post do site
-					lá em 2003 e o trabalho que ele fez.</p>
-
-				<p>
-					No começo eu fiquei muito tempo na parte de descompressão dos textos, pois o pessoal da Dejap
-					resolveu não expandir a memória e por isso teve que fazer uma compressão absurda em duas camadas,
-					comprimindo por uma espécie de dicionário e fazendo um Huffman por cima. Os itens tem uma compressão
-					separada, os menus tem duas outras compressões separadas e as descrições dos menus outras duas
-					compressões, então tudo isso levou um bom tempo e milhares de linhas de assembly modificadas no
-					jogo. As ferramentas em C++ também deram um trabalho absurdo. O Magno também fez algo similar ao que
-					a Dejap fez, porém eu fui por uma linha separada e me alavanquei nas funcionalidades do S-DD1 pra me
-					ajudar nessas limitações de memória. O Byuu me ajudou nessa parte e isso me proporcionou um conforto
-					muito grande na reinserção dos textos.
-				</p>
-
-				<p>
-					Já na parte dos gráficos, inicialmente ninguém sabia como o algoritmo do S-DD1 funcionava, lá pro
-					início dos anos 2000, e o pessoal da Dejap fez um trabalho absurdo pra criar packs gráficos pro
-					Zsnes que, juntamente com mudanças no código do jogo, fazia o jogo rodar com os gráficos
-					descomprimidos previamente. Os emuladores emulavam o chip S-DD1 por HLE (High Level Emulation), o
-					que não leva em conta os timings reais do chip, então as batalhas por exemplo rodavam muito mais
-					rápido que o normal. Posteriormente muitas pessoas talentosas conseguiram desvendar o funcionamento
-					do chip e criaram codecs pra descomprimir os gráficos, e os emuladores passaram a emular o chip por
-					LLE (Low Level Emulation), o que faz o jogo rodar com os timings reais do chip. O Andreas Naive foi
-					um dos principais responsáveis por isso. Eu consegui acesso a um desses codecs e consegui fazer as
-					mudanças nos gráficos usando o código que ele fez.
-				</p>
-
-				<p>
-					A parte da tradução dos textos em si do inglês pro português também levei muito tempo pra terminar,
-					pois um dos desafios das traduções é manter a coesão e coerência do texto original, e isso é muito
-					difícil de fazer, principalmente em um jogo tão grande quanto o Star Ocean. Pra isso eu fui jogando
-					o jogo e a cada diálogo ia traduzindo junto com o jogo, pra ir entendendo todo o contexto de cada
-					frase. Muitas partes também comparei com o texto em japonês para tentar fazer a melhor tradução
-					possível. Somado tudo isso, não basta apenas fazer uma tradução exata, pois a localização de um jogo
-					é muito mais que isso, é fazer com que o jogador se sinta imerso no mundo do jogo, como se tivesse
-					sido feito originalmente em português. Isso é muito difícil de fazer, e acho que consegui fazer um
-					bom trabalho nisso, mas levou anos. Esse é um trabalho sem fim, pois toda vez que você joga o jogo
-					você encontra algo que poderia ter feito melhor, mas estou lançando da melhor forma que consegui, e
-					ainda pretendo ir melhorando com o feedback de vocês.
-				</p>
-
-				<p> Com o tempo pretendo ir adicionando mais curiosidades e informações nesta página, então sempre que
-					puderem tentem acompanhar esta página.</p>
-
-				<p>
-					Enfim, espero que gostem da tradução, e que se divirtam jogando o Star Ocean em português. Se
-					tiverem qualquer dúvida, sugestão, crítica ou bug, por favor me avisem. Obrigado a todos que me
-					ajudaram e que me apoiaram durante todos esses anos. Espero que gostem do resultado final.
-				</p>
-
-				<h2>Patch de Modo fácil</h2>
-
-				<p>O Star Ocean não é um jogo curto, então como bônus eu adicionei um patch de modo fácil pra diminuir o
-					grinding do jogo pra quem não quiser ficar muito tempo upando os personagens. O jogo original já tem
-					uma dificuldade bem balanceada e o grinding é no ponto certo, então esses patchs são mais pra quem
-					quer ter uma experiência mais rápida, mas não recomendo pra quem for jogar pela primeira vez. Este
-					patch é totalmente opcional. Na verdade são 2 patches, um de modo fácil e outro de modo super fácil.
-					Aplique
-					o patch IPS na Rom traduzida, e serve também pra versão em inglês da DeJap. A partir de certo
-					momento do jogo dá para diminuir o número de batalhas aleatórias no jogo, então você pode usar este
-					patch pra diminuir o tempo que você vai precisar pra upar os personagens, mantendo uma dificuldade
-					alta. Abaixo tem mais detalhes sobre cada patch.</p>
-
-				<h3>EasyMode - Modo Fácil</h3>
-
-				<p>Este patch aumenta em 2x a experiência e o dinheiro ganho em batalhas. Isso basicamente diminui pela
-					metade o tempo que você vai precisar pra upar os personagens. Isso não interfere em nada no número
-					de batalhas aleatórias que você vai encontrar, e todas as outras estatísticas de cada nível de
-					personagem são as mesmas. Apenas a experiência e o dinheiro ganho são dobrados no final de cada
-					batalha. No jogo normal você de tempos em tempos tem que ficar upando os personagens, o que é comum
-					em todos os JRPGs, mas com este patch você vai precisar fazer isso menos vezes, porém ainda vai ter
-					dificuldade em algumas partes, principalmente chefes, caso não up o suficiente, porém em algumas
-					partes vai ser mais fácil pois pode ter chance de já chegar upado em algumas regiões. Este patch é
-					recomendado pra quem não quer ficar muito tempo upando os personagens, e quer focar mais na
-					história, mas ainda quer ter um desafio no jogo. Não recomendo pra quem for jogar pela primeira vez.
-				</p>
-
-				<h3>SuperEasyMode - Modo Super Fácil</h3>
-
-				<p>Este patch aumenta em 4x a experiência e o dinheiro ganho em batalhas. Isso torna o jogo bem mais
-					fácil, pois provavelmente você já chegará em um nível confortável em cada região sem precisar ter
-					feito grinding, então as batalhas vão ser fáceis, pois você já vai estar forte o suficiente. Apenas
-					nos chefes vai ter algum perigo de fato. Este patch é recomendado pra quem quer focar apenas na
-					história e não quer ter dificuldade nenhuma no jogo, e quer apenas curtir a história e os
-					personagens. Mesmo sendo mais fácil ainda não dá pra sair entrando em qualquer lugar que não é pro
-					seu nível, então ainda mantém a integridade do jogo, mas vai ser bem mais fácil de upar os
-					personagens. Não recomendo pra quem for jogar pela primeira vez.</p>
-
-				<p>Daria pra fazer patches que aumentam mais ainda a experiência e o dinheiro, tipo 8x, 10x, mas aí já
-					quebraria o jogo, deixando os personagens ultra fortes e sem desafio nenhum. Então acho que 4x é o
-					número máximo que dá pra aumentar sem quebrar a imersão do jogo.</p>
-
-				<p>E pra desligar o patch, é só sobrescrever a Rom com a Rom original (mantendo o nome do arquivo) e
-					recarregar o save. O patch não altera nada no save, então é só desligar o patch e continuar de onde
-					parou, caso queira acelerar apenas alguma parte do jogo.</p>
-
-				<h2>Licença de Uso</h2>
-
-				Esta tradução é 100% livre, pra você utilizar da melhor forma que quiser. Não espero nada em troca, pois
-				meu ganho foi em conhecimento e alegria de saber que algumas pessoas vão se divertir jogando.
-				Aproveitem.
-
-
-				<section class="tiles">
-
-					<article>
-						<span class="thumb">
-							<img src="images/starocean027.png" alt="" />
-						</span>
-					</article>
-
-					<article>
-						<span class="thumb">
-							<img src="images/starocean029.png" alt="" />
-						</span>
-					</article>
-
-					<article>
-						<span class="thumb">
-							<img src="images/starocean030.png" alt="" />
-						</span>
-					</article>
-
-					<article>
-						<span class="thumb">
-							<img src="images/starocean031.png" alt="" />
-						</span>
-					</article>
-
-					<article>
-						<span class="thumb">
-							<img src="images/starocean021.png" alt="" />
-						</span>
-					</article>
-
-					<article>
-						<span class="thumb">
-							<img src="images/starocean025.png" alt="" />
-						</span>
-					</article>
-
-					<article>
-						<span class="thumb">
-							<img src="images/starocean019.png" alt="" />
-						</span>
-					</article>
-
-					<article>
-						<span class="thumb">
-							<img src="images/starocean023.png" alt="" />
-						</span>
-					</article>
-
-					<article>
-						<span class="thumb">
-							<img src="images/starocean020.png" alt="" />
-						</span>
-					</article>
-
-					<article>
-						<span class="thumb">
-							<img src="images/starocean021.png" alt="" />
-						</span>
-					</article>
-
-					<article>
-						<span class="thumb">
-							<img src="images/starocean024.png" alt="" />
-						</span>
-					</article>
-
-					<article>
-						<span class="thumb">
-							<img src="images/starocean018.png" alt="" />
-						</span>
-					</article>
-
-					<article>
-						<span class="thumb">
-							<img src="images/starocean017.png" alt="" />
-						</span>
-					</article>
-				</section>
-
+				<article class="prose">
+
+					<section id="lancamento">
+						<h2>Lançamento</h2>
+						<p>Primeiramente obrigado pelo interesse na minha tradução do Star Ocean para o português. Este projeto
+							foi feito com muito carinho e dedicação, espero que gostem.
+							Antes de mais nada esta é uma versão <strong class="hl-red">BETA</strong> da
+							tradução, então pode conter erros e bugs. Com certeza vão aparecer erros de digitação que passaram e
+							que irei corrigindo em versões futuras. Esta primeira versão é pra estar 100% jogável do começo ao
+							fim, mas ainda não é a versão final. Eu não quero mais ficar sozinho testando este jogo, então estou
+							liberando pra vocês testarem e me ajudarem a encontrar erros e bugs, o que vai me ajudar e dar ânimo
+							para chegar na versão final (o que já está bem próximo). Então por favor, se encontrar algum bug,
+							erros de português, gráficos não traduzidos ou qualquer coisa que não esteja de acordo, me avise
+							para que eu possa corrigir.
+							Mais detalhes sobre como reportar bugs e erros estão <a href="#bugs">em uma seção abaixo</a>.</p>
+
+						<p>Este jogo tem muitas combinações de personagens que você pode escolher durante a jornada, e os
+							diálogos mudam, então não cheguei a testar 100% todas as combinações possíveis nessas últimas
+							revisões que fiz, então é possível ter
+							algum erro de diálogo em alguma parte do jogo. Porém o mais comum são os jogadores seguirem o fluxo
+							comum e deixarem o Cius no grupo, o que eu recomendo para quem for jogar pela primeira vez, pois ele
+							é um personagem muito legal. Eu também fiz muitas mudanças de última hora no jogo nesses dias
+							anteriores ao lançamento, e não testei 100% do jogo a cada mudança, então é possível ter algum erro
+							que eu não vi, mas é muito pouco provável que tenha algo quebrado lá pro final do jogo. Mas se tiver
+							algo quebrado me avise que eu corrijo.</p>
+					</section>
+
+					<section id="aplicacao">
+						<h2>Aplicação do Patch</h2>
+
+						<p>Primeiramente faça o download do patch através do link acima no início desta página. A tabela abaixo
+							mostra um resumo de cada arquivo dentro do arquivo de patch.</p>
+
+						<div class="table-wrap table-wrap--stack">
+							<table>
+								<thead>
+									<tr>
+										<th scope="col">Arquivo</th>
+										<th scope="col">Descrição</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><code>starocean_dejap_ptbr.bps</code></td>
+										<td>É o patch <strong>BPS</strong> para ser aplicado na Rom da Dejap.</td>
+									</tr>
+									<tr>
+										<td><code>starocean_dejap_ptbr.ips</code></td>
+										<td>É o patch <strong>IPS</strong> para ser aplicado na Rom da Dejap.</td>
+									</tr>
+									<tr>
+										<td><code>starocean_jp_ptbr.bps</code></td>
+										<td>É o patch <strong>BPS</strong> para ser aplicado na Rom original japonesa.</td>
+									</tr>
+									<tr>
+										<td><code>starocean_jp_ptbr.ips</code></td>
+										<td>É o patch <strong>IPS</strong> para ser aplicado na Rom original japonesa.</td>
+									</tr>
+									<tr>
+										<td><code>beat.exe</code></td>
+										<td>Aplicador de patches do formato <strong>BPS</strong>.</td>
+									</tr>
+									<tr>
+										<td><code>Lunar IPS.exe</code></td>
+										<td>Aplicador de patches do formato <strong>IPS</strong>.</td>
+									</tr>
+									<tr>
+										<td>Pasta <code>easymode</code></td>
+										<td>Contém o patch de modo fácil, no formato IPS.</td>
+									</tr>
+									<tr>
+										<td>Pasta <code>super easymode</code></td>
+										<td>Contém o patch de modo super fácil, no formato IPS.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<p>Para aplicar o patch você vai precisar de uma cópia da <strong>Rom</strong> do jogo. Você pode
+							encontrar a Rom do jogo facilmente na internet, mas eu não posso fornecer links para download aqui.</p>
+
+						<p>Existem patches no formato <strong>IPS</strong> e <strong>BPS</strong>, você pode usar o que
+							preferir.
+							Eu recomendo fortemente o uso do <strong>BPS</strong>, pois ele força a aplicação do patch na Rom
+							correta. No arquivo do patch eu coloquei os binários das aplicações que aplicam patches IPS (Lunar
+							Ips) e BPS (Beat). Caso queira baixar por conta, pode baixar o <a
+								href="https://www.romhacking.net/utilities/240/" target="_blank" rel="noopener">Lunar Ips aqui</a>
+							e o <a href="https://www.romhacking.net/utilities/893/" target="_blank" rel="noopener">Beat aqui</a>.</p>
+
+						<p>Coloquei também patches para serem usados com a versão original japonesa do Star Ocean, e também com
+							a versão em inglês feita pela <strong>DeJap</strong>. A tabela abaixo mostra qual é o CRC32 de cada
+							versão do jogo (pode ser visto no WinRAR por exemplo), para que você veja qual Rom o patch foi feito
+							para ser aplicado.</p>
+
+						<div class="table-wrap">
+							<table>
+								<thead>
+									<tr>
+										<th scope="col">Versão</th>
+										<th scope="col">CRC32</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Original Japonesa</td>
+										<td><code>3DBDFDBF</code></td>
+									</tr>
+									<tr>
+										<td>DeJap</td>
+										<td><code>6BA9E08D</code></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+
+					<section id="compatibilidade">
+						<h2>Compatibilidade</h2>
+
+						<p>Esta tradução foi feita com o hardware real em mente, focando nos emuladores da família Bsnes, que
+							são o <strong>Bsnes, Higan e Ares</strong>. O jogo foi testado e está 100% jogável nestes
+							emuladores em suas últimas versões no começo de 2025. O jogo também funciona no
+							<strong>Snes9x</strong>, mas testei apenas da versão <strong>1.56</strong> em diante. Recomendo a
+							última versão <strong>1.63</strong>, que é a última versão no momento do lançamento.</p>
+
+						<p>Também funciona
+							no hardware real usando o <strong>sd2snes</strong> ou <strong>FxPak Pro</strong>, que são flashcards
+							para o Super Nintendo que
+							suportam o chip S-DD1. Para esses flashcards é necessário usar a versão <strong>1.11.1rc4</strong> ou
+							superior do firmware, que arruma o mapeamento de memória do jogo. O link deste firmware está no
+							início desta página.</p>
+
+						<p>Também recomendo fortemente o uso do <strong>Retroarch</strong> com o core do <strong>Bsnes</strong>
+							ou do <strong>Snes9x</strong>, pois são compatíveis e possuem muitas opções de configuração, como a
+							utilização de filtros gráficos, shaders, etc. O Ares também é altamente recomendável pois é o
+							emulador atual da família Bsnes e suporta vários shaders como o Retroarch.</p>
+
+						<p>O Star Ocean utiliza o chip <strong>S-DD1</strong>, então é necessário um emulador que suporte este
+							chip e faça o mapeamento de memória de forma correta. Esta tradução foi complexa de fazer, e expande
+							o jogo original, então é possível que emuladores mais antigos não suportem a tradução. No próprio
+							Retroarch eu vi que alguns cores mais antigos do Snes9x, como o Snes9x 2005, não
+							funcionam com a tradução. O mesmo vale pro Bsnes 2014, que deve ter algum bug, uma vez que versões
+							mais antigas do Bsnes funcionam. Eu até poderia fazer um pull request no repositório desses cores
+							que não funcionam, mas se você utiliza o Retroarch é só baixar o core oficial que vai funcionar,
+							então não faz sentido usar um core antigo com esse jogo.</p>
+
+						<p>Outros emuladores, como o <strong>Zsnes</strong>, provavelmente não funcionam com a tradução, então
+							não recomendo o uso deles.</p>
+
+						<p>Se você for jogar no <strong>PC</strong> apenas use as últimas versões dos emuladores da família
+							Bsnes (principalmente o Ares) e Snes9x, ou o Retroarch com o core do Bsnes ou do Snes9x.</p>
+
+						<p>Em <strong>celular Android</strong> eu testei no Retroarch e naquele Snes9x EX+ e funciona
+							perfeitamente.</p>
+
+						<p>Hoje em dia existe uma infinidade de emuladores e dispositivos que rodam jogos de Super Nintendo,
+							então dá pra achar um que funcione com a tradução, nem que for um celular rodando Retroarch. Se a
+							vontade é jogar em algum aparelho mais antigo que tenha um emulador incompatível que não dê pra
+							atualizar, por enquanto não tem muito o que fazer, e a opção é jogar em algo que dê pra colocar um
+							emulador mais novo.</p>
+
+						<p>A princípio também daria pra rodar no cartucho original, fazendo os ajustes necessários, mas não
+							testei e não tenho como testar, então não posso garantir que funcione, mas provavelmente sim pois
+							funciona no próprio console com o sd2snes/FxPakPro. Se alguém testar e funcionar me
+							avise que eu coloco aqui.</p>
+					</section>
+
+					<section id="bugs">
+						<h2>Reportando Bugs e Erros</h2>
+
+						<p>Se você encontrar algum bug, erro de português, gráficos não traduzidos ou qualquer coisa que não
+							esteja de acordo, o melhor lugar pra reportar é na <strong><a
+								href="https://github.com/DougRpg/StarOcean/issues" target="_blank" rel="noopener">seção de
+								issues do repositório do Github</a></strong>. Lá você pode criar um novo issue e descrever o problema
+							detalhadamente, e se possível anexar uma imagem do problema. Se você não tiver uma conta no Github
+							pode criar uma gratuitamente, e é bem simples de fazer. Se você não quiser criar uma conta no Github
+							pode enviar o problema em algum comentário de um vídeo meu no Youtube, passando por exemplo o texto
+							que está com problema que aí eu consigo identificar o problema e corrigir. Mas nos comentários do
+							Youtube é mais difícil de eu ver, então o ideal é criar um issue no Github.</p>
+
+						<p>Pra criar uma issue entre no link acima ou no <a href="https://github.com/DougRpg/StarOcean"
+								target="_blank" rel="noopener">repositório do Github</a>, clique em
+							<strong>Issues</strong>, como dá pra ver na imagem abaixo:</p>
+
+						<figure class="figure figure--small">
+							<img src="images/starocean_help1.png" alt="Aba Issues no repositório StarOcean do GitHub" width="504" height="282" loading="lazy">
+						</figure>
+
+						<p>Depois clique no botão <strong>New Issue</strong> no canto superior direito, como dá pra ver na
+							segunda imagem abaixo:</p>
+
+						<figure class="figure">
+							<img src="images/starocean_help2.png" alt="Botão New issue na página de issues do GitHub" width="1580" height="340" loading="lazy">
+						</figure>
+
+						<p>Depois é só preencher o formulário com o título e a descrição do problema.</p>
+					</section>
+
+					<section id="agradecimentos">
+						<h2>Participantes e agradecimentos</h2>
+
+						<p>Todo o romhacking e tradução das mudanças para o português foram feitas por mim,
+							<strong>DougRPG</strong>.</p>
+
+						<p>Esta tradução foi baseada na tradução em inglês feita pela <strong><a
+								href="http://dejap.eludevisibility.org/" target="_blank" rel="noopener">DeJap</a></strong>,
+							principalmente do
+							<strong>Dark Force</strong>, que fez a maior parte das mudanças no assembly que eu fiquei centenas
+							de horas debugando e alterando.
+							A Dejap fez um trabalho absurdo e incrível, isso há mais de 20 anos atrás. Queria um dia chegar
+							perto do talento desse pessoal.</p>
+
+						<p>Também tive ajuda do <strong><a href="https://magno.romhackhispano.org/" target="_blank"
+								rel="noopener">Magno</a></strong>, responsável pela tradução pro espanhol, que me enviou
+							algumas documentações que ele fez de algumas partes do código, principalmente dos menus, e que me
+							ajudaram imensamente em várias mudanças que tive que fazer e me pouparam vários meses de trabalho. O
+							Magno é um ponto fora da curva no quesito programação.</p>
+
+						<p>Também agradeço ao <strong>Byuu/Near</strong> (que já faleceu) e que é o desenvolvedor dos emuladores
+							da família do
+							Bsnes, Higan e Ares, que são os melhores emuladores de Super Nintendo (e de vários outros sistemas)
+							que existem. Sem o trabalho
+							dele a cena de emulação de Super Nintendo estaria anos no passado. Eu utilizei na tradução dois
+							debuggers feitos por ele, e também o assembler Bass. E o formato de patch BPS também é dele. Sem
+							essas ferramentas não teria conseguido
+							fazer nada. Ele também me ajudou a entender o chip S-DD1, que é o chip de compressão de gráficos do
+							Star Ocean, e que foi um dos maiores desafios da tradução. Ele também foi um dos pilares da tradução
+							do Tengai Makyou Zero pro inglês que eu participei. Obrigado Byuu/Near, você fez um trabalho
+							incrível e mudou a cena de emulação pra sempre.</p>
+
+						<p>Falando em S-DD1, agradeço ao <strong>Andreas Naive</strong>, que é uma das pessoas que conseguiu
+							desvendar o
+							algoritmo do S-DD1 e fez um codec que consegui ter acesso e compilar, o que me possibilitou fazer as
+							alterações dos gráficos e recomprimir de volta pro formato original.</p>
+
+						<p>Também agradeço ao <strong>Ikari</strong>, desenvolvedor dos flashcards <a
+								href="https://krikzz.com/our-products/cartridges/fxpak-pro.html" target="_blank"
+								rel="noopener">sd2snes e FxPak Pro</a>, que arrumou o mapeamento de memória do Star Ocean no
+							firmware, permitindo que o jogo funcione perfeitamente no hardware real.</p>
+
+						<p>Sem o trabalho da DeJap, Byuu, Andreas Naive e do Magno esta tradução não teria sido possível. O que eu
+							fiz aqui não é nada comparado ao que esse pessoal fez. E agradeço também ao pessoal da Enix e Tri-Ace,
+							que fizeram esta obra prima que é o Star Ocean. Obrigado a todos.</p>
+					</section>
+
+					<section id="historia">
+						<h2>História da Tradução</h2>
+
+						<p>Comecei esta tradução há uns 10 anos atrás mais ou menos, lá pra 2014. Naquela época estava começando
+							ainda no mundo do romhacking, então muita coisa fui aperfeiçoando ao longo do tempo. As ferramentas
+							pra esse jogo eu fiz em QT usando C++, mas depois em outros jogos passei a usar Python, o que achei
+							bem melhor pra romhacking. Esse jogo tem vários blocos de texto com mais de um tipo de compressão,
+							então o código das ferramentas ficou bem grande e não tive coragem de portar tudo pra Python
+							posteriormente.</p>
+
+						<p>Cada projeto eu coloco em uma pasta separada e acabei de ver aqui que no lançamento da tradução
+							do Star Ocean a pasta do jogo está com 2.64GB, de tanta coisa que fui experimentando nestes 10 anos.</p>
+
+						<p>Apesar de ter levado uns 10 anos pra terminar esta tradução, a maior parte do tempo foi
+							procrastinação e acontecimentos da vida, pois se tivesse trabalhado de forma consistente, fazendo um
+							pouco por semana, teria levado uns 2 ou 3 anos. Às vezes ficava meses sem mexer no projeto, e como
+							esta tradução tem muito código assembly criado, toda vez que voltava tinha que relembrar parte do
+							que tinha
+							feito, o que atrasava ainda mais o projeto, pois voltar pra código assembly é muito complicado e
+							demora pra relembrar. Por sorte eu sempre fiz em blocos fechados de trabalho, então era raro ter que
+							mudar uma parte que já tinha finalizado, mas aconteceu várias vezes. O pessoal da Dejap fez muito
+							trabalho em um curto
+							período, mas vendo <a href="http://dejap.eludevisibility.org/" target="_blank" rel="noopener">aqui
+								no antigo site da Dejap</a> dá pra ver o depoimento do Dark Force no penúltimo post do site
+							lá em 2003 e o trabalho que ele fez.</p>
+
+						<p>No começo eu fiquei muito tempo na parte de descompressão dos textos, pois o pessoal da Dejap
+							resolveu não expandir a memória e por isso teve que fazer uma compressão absurda em duas camadas,
+							comprimindo por uma espécie de dicionário e fazendo um Huffman por cima. Os itens tem uma compressão
+							separada, os menus tem duas outras compressões separadas e as descrições dos menus outras duas
+							compressões, então tudo isso levou um bom tempo e milhares de linhas de assembly modificadas no
+							jogo. As ferramentas em C++ também deram um trabalho absurdo. O Magno também fez algo similar ao que
+							a Dejap fez, porém eu fui por uma linha separada e me alavanquei nas funcionalidades do S-DD1 pra me
+							ajudar nessas limitações de memória. O Byuu me ajudou nessa parte e isso me proporcionou um conforto
+							muito grande na reinserção dos textos.</p>
+
+						<p>Já na parte dos gráficos, inicialmente ninguém sabia como o algoritmo do S-DD1 funcionava, lá pro
+							início dos anos 2000, e o pessoal da Dejap fez um trabalho absurdo pra criar packs gráficos pro
+							Zsnes que, juntamente com mudanças no código do jogo, fazia o jogo rodar com os gráficos
+							descomprimidos previamente. Os emuladores emulavam o chip S-DD1 por HLE (High Level Emulation), o
+							que não leva em conta os timings reais do chip, então as batalhas por exemplo rodavam muito mais
+							rápido que o normal. Posteriormente muitas pessoas talentosas conseguiram desvendar o funcionamento
+							do chip e criaram codecs pra descomprimir os gráficos, e os emuladores passaram a emular o chip por
+							LLE (Low Level Emulation), o que faz o jogo rodar com os timings reais do chip. O Andreas Naive foi
+							um dos principais responsáveis por isso. Eu consegui acesso a um desses codecs e consegui fazer as
+							mudanças nos gráficos usando o código que ele fez.</p>
+
+						<p>A parte da tradução dos textos em si do inglês pro português também levei muito tempo pra terminar,
+							pois um dos desafios das traduções é manter a coesão e coerência do texto original, e isso é muito
+							difícil de fazer, principalmente em um jogo tão grande quanto o Star Ocean. Pra isso eu fui jogando
+							o jogo e a cada diálogo ia traduzindo junto com o jogo, pra ir entendendo todo o contexto de cada
+							frase. Muitas partes também comparei com o texto em japonês para tentar fazer a melhor tradução
+							possível. Somado tudo isso, não basta apenas fazer uma tradução exata, pois a localização de um jogo
+							é muito mais que isso, é fazer com que o jogador se sinta imerso no mundo do jogo, como se tivesse
+							sido feito originalmente em português. Isso é muito difícil de fazer, e acho que consegui fazer um
+							bom trabalho nisso, mas levou anos. Esse é um trabalho sem fim, pois toda vez que você joga o jogo
+							você encontra algo que poderia ter feito melhor, mas estou lançando da melhor forma que consegui, e
+							ainda pretendo ir melhorando com o feedback de vocês.</p>
+
+						<p>Com o tempo pretendo ir adicionando mais curiosidades e informações nesta página, então sempre que
+							puderem tentem acompanhar esta página.</p>
+
+						<p>Enfim, espero que gostem da tradução, e que se divirtam jogando o Star Ocean em português. Se
+							tiverem qualquer dúvida, sugestão, crítica ou bug, por favor me avisem. Obrigado a todos que me
+							ajudaram e que me apoiaram durante todos esses anos. Espero que gostem do resultado final.</p>
+					</section>
+
+					<section id="modo-facil">
+						<h2>Patch de Modo fácil</h2>
+
+						<p>O Star Ocean não é um jogo curto, então como bônus eu adicionei um patch de modo fácil pra diminuir o
+							grinding do jogo pra quem não quiser ficar muito tempo upando os personagens. O jogo original já tem
+							uma dificuldade bem balanceada e o grinding é no ponto certo, então esses patchs são mais pra quem
+							quer ter uma experiência mais rápida, mas não recomendo pra quem for jogar pela primeira vez. Este
+							patch é totalmente opcional. Na verdade são 2 patches, um de modo fácil e outro de modo super fácil.
+							Aplique
+							o patch IPS na Rom traduzida, e serve também pra versão em inglês da DeJap. A partir de certo
+							momento do jogo dá para diminuir o número de batalhas aleatórias no jogo, então você pode usar este
+							patch pra diminuir o tempo que você vai precisar pra upar os personagens, mantendo uma dificuldade
+							alta. Abaixo tem mais detalhes sobre cada patch.</p>
+
+						<h3>EasyMode — Modo Fácil</h3>
+
+						<p>Este patch aumenta em 2x a experiência e o dinheiro ganho em batalhas. Isso basicamente diminui pela
+							metade o tempo que você vai precisar pra upar os personagens. Isso não interfere em nada no número
+							de batalhas aleatórias que você vai encontrar, e todas as outras estatísticas de cada nível de
+							personagem são as mesmas. Apenas a experiência e o dinheiro ganho são dobrados no final de cada
+							batalha. No jogo normal você de tempos em tempos tem que ficar upando os personagens, o que é comum
+							em todos os JRPGs, mas com este patch você vai precisar fazer isso menos vezes, porém ainda vai ter
+							dificuldade em algumas partes, principalmente chefes, caso não upe o suficiente, porém em algumas
+							partes vai ser mais fácil pois pode ter chance de já chegar upado em algumas regiões. Este patch é
+							recomendado pra quem não quer ficar muito tempo upando os personagens, e quer focar mais na
+							história, mas ainda quer ter um desafio no jogo. Não recomendo pra quem for jogar pela primeira vez.</p>
+
+						<h3>SuperEasyMode — Modo Super Fácil</h3>
+
+						<p>Este patch aumenta em 4x a experiência e o dinheiro ganho em batalhas. Isso torna o jogo bem mais
+							fácil, pois provavelmente você já chegará em um nível confortável em cada região sem precisar ter
+							feito grinding, então as batalhas vão ser fáceis, pois você já vai estar forte o suficiente. Apenas
+							nos chefes vai ter algum perigo de fato. Este patch é recomendado pra quem quer focar apenas na
+							história e não quer ter dificuldade nenhuma no jogo, e quer apenas curtir a história e os
+							personagens. Mesmo sendo mais fácil ainda não dá pra sair entrando em qualquer lugar que não é pro
+							seu nível, então ainda mantém a integridade do jogo, mas vai ser bem mais fácil de upar os
+							personagens. Não recomendo pra quem for jogar pela primeira vez.</p>
+
+						<p>Daria pra fazer patches que aumentam mais ainda a experiência e o dinheiro, tipo 8x, 10x, mas aí já
+							quebraria o jogo, deixando os personagens ultra fortes e sem desafio nenhum. Então acho que 4x é o
+							número máximo que dá pra aumentar sem quebrar a imersão do jogo.</p>
+
+						<p>E pra desligar o patch, é só sobrescrever a Rom com a Rom original (mantendo o nome do arquivo) e
+							recarregar o save. O patch não altera nada no save, então é só desligar o patch e continuar de onde
+							parou, caso queira acelerar apenas alguma parte do jogo.</p>
+					</section>
+
+					<section id="licenca">
+						<h2>Licença de Uso</h2>
+
+						<p>Esta tradução é 100% livre, pra você utilizar da melhor forma que quiser. Não espero nada em troca, pois
+							meu ganho foi em conhecimento e alegria de saber que algumas pessoas vão se divertir jogando.
+							Aproveitem.</p>
+					</section>
+
+					<section id="screenshots">
+						<h2>Screenshots</h2>
+
+						<ul class="gallery">
+							<li><a class="crt" href="images/starocean027.png" data-lightbox><img class="pixel" src="images/starocean027.png" alt="Star Ocean em português — screenshot 1" width="256" height="224" loading="lazy"></a></li>
+							<li><a class="crt" href="images/starocean029.png" data-lightbox><img class="pixel" src="images/starocean029.png" alt="Star Ocean em português — screenshot 2" width="256" height="224" loading="lazy"></a></li>
+							<li><a class="crt" href="images/starocean030.png" data-lightbox><img class="pixel" src="images/starocean030.png" alt="Star Ocean em português — screenshot 3" width="256" height="224" loading="lazy"></a></li>
+							<li><a class="crt" href="images/starocean031.png" data-lightbox><img class="pixel" src="images/starocean031.png" alt="Star Ocean em português — screenshot 4" width="256" height="224" loading="lazy"></a></li>
+							<li><a class="crt" href="images/starocean021.png" data-lightbox><img class="pixel" src="images/starocean021.png" alt="Star Ocean em português — screenshot 5" width="256" height="224" loading="lazy"></a></li>
+							<li><a class="crt" href="images/starocean025.png" data-lightbox><img class="pixel" src="images/starocean025.png" alt="Star Ocean em português — screenshot 6" width="256" height="224" loading="lazy"></a></li>
+							<li><a class="crt" href="images/starocean019.png" data-lightbox><img class="pixel" src="images/starocean019.png" alt="Star Ocean em português — screenshot 7" width="256" height="224" loading="lazy"></a></li>
+							<li><a class="crt" href="images/starocean023.png" data-lightbox><img class="pixel" src="images/starocean023.png" alt="Star Ocean em português — screenshot 8" width="256" height="224" loading="lazy"></a></li>
+							<li><a class="crt" href="images/starocean020.png" data-lightbox><img class="pixel" src="images/starocean020.png" alt="Star Ocean em português — screenshot 9" width="256" height="224" loading="lazy"></a></li>
+							<li><a class="crt" href="images/starocean024.png" data-lightbox><img class="pixel" src="images/starocean024.png" alt="Star Ocean em português — screenshot 10" width="256" height="224" loading="lazy"></a></li>
+							<li><a class="crt" href="images/starocean018.png" data-lightbox><img class="pixel" src="images/starocean018.png" alt="Star Ocean em português — screenshot 11" width="256" height="224" loading="lazy"></a></li>
+							<li><a class="crt" href="images/starocean017.png" data-lightbox><img class="pixel" src="images/starocean017.png" alt="Star Ocean em português — screenshot 12" width="256" height="224" loading="lazy"></a></li>
+						</ul>
+					</section>
+
+				</article>
 			</div>
 		</div>
+	</main>
 
-		<!-- Footer -->
-		<footer id="footer">
-			<div class="inner">
-				<section>
-					&copy; DougRPG 2025
-				</section>
-			</div>
-		</footer>
-
-	</div>
-
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-
+	<!-- Rodapé -->
+	<footer class="site-footer">
+		<div class="snes-stripe" aria-hidden="true"></div>
+		<div class="container site-footer__inner">
+			<a class="logo" href="index.html" aria-label="DougRPG — início">
+				<img class="logo__mark" src="assets/img/logo.svg" alt="" width="20" height="20">
+				<span class="logo__text">DougRPG</span>
+			</a>
+			<p>Projetos de tradução de jogos de Super Nintendo e Mega Drive.</p>
+			<p>&copy; <span data-year>2026</span> DougRPG</p>
+		</div>
+	</footer>
 </body>
 
 </html>

@@ -1,0 +1,1589 @@
+/* ==========================================================================
+   DougRPG — Projetos de tradução
+   Estilo retrô 16-bit, em CSS puro (sem frameworks).
+
+   1. Variáveis
+   2. Base
+   3. Fundo estrelado
+   4. Utilitários
+   5. Cabeçalho e rodapé
+   6. Botões, janelas e etiquetas
+   7. Página inicial
+   8. Páginas de projeto
+   9. Texto longo
+   10. Galeria e visualizador de imagens
+   11. Página 404
+   12. Animações
+   ========================================================================== */
+
+
+/* 1. Variáveis
+   ========================================================================== */
+
+:root {
+	/* Fundo e painéis */
+	--bg: #0a0b1e;
+	--panel: #12153a;
+	--panel-2: #1a1e4e;
+	--line: #262b66;
+	--line-2: #3b4292;
+
+	/* Texto */
+	--text: #e7e8ff;
+	--muted: #a6abd9;
+
+	/* Destaques: as cores dos botões do controle do Super Nintendo */
+	--yellow: #ffd23f;
+	--red: #ff4d6d;
+	--green: #3ddc84;
+	--blue: #4d7cff;
+	--cyan: #5ee7ff;
+
+	/* Janela azul de RPG */
+	--win-top: #3448c9;
+	--win-mid: #1d2795;
+	--win-bottom: #10175f;
+	--win-border: #eef0ff;
+	--win-outline: #060924;
+
+	/* Fontes */
+	--font-pixel: "Press Start 2P", ui-monospace, monospace;
+	--font-term: "VT323", ui-monospace, monospace;
+	--font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+	/* Tamanho de 1 "pixel" das bordas serrilhadas */
+	--px: 4px;
+
+	--container: 1180px;
+	--header-h: 68px;
+
+	/* Seta de menu de RPG (▶) em pixel art, usada como máscara */
+	--icon-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 7' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h1v1h1v1h1v1h1v1h-1v1h-1v1h-1v1H0z'/%3E%3C/svg%3E");
+}
+
+
+/* 2. Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	color-scheme: dark;
+	scroll-behavior: smooth;
+	scroll-padding-top: calc(var(--header-h) + 1.5rem);
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0;
+	font-family: var(--font-body);
+	font-size: 1.0625rem;
+	line-height: 1.7;
+	color: var(--text);
+	background-color: var(--bg);
+	background-image:
+		radial-gradient(ellipse 70% 45% at 8% 0%, rgba(98, 76, 255, 0.22), transparent 70%),
+		radial-gradient(ellipse 50% 40% at 100% 30%, rgba(255, 77, 109, 0.1), transparent 70%),
+		radial-gradient(ellipse 80% 50% at 50% 100%, rgba(46, 94, 232, 0.18), transparent 70%);
+	background-attachment: fixed;
+	-webkit-font-smoothing: antialiased;
+}
+
+main {
+	flex: 1;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: var(--yellow);
+}
+
+a:hover {
+	color: #ffe27a;
+}
+
+:focus-visible {
+	outline: 3px dashed var(--yellow);
+	outline-offset: 4px;
+}
+
+::selection {
+	color: #1a1200;
+	background: var(--yellow);
+}
+
+h1,
+h2,
+h3 {
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+
+/* 3. Fundo estrelado (duas camadas que piscam em ritmos diferentes)
+   ========================================================================== */
+
+body::before,
+body::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+}
+
+body::before {
+	background: url("../img/stars-a.svg") 0 0 / 512px 512px;
+	animation: twinkle 4s steps(4) infinite alternate;
+}
+
+body::after {
+	background: url("../img/stars-b.svg") 130px 90px / 400px 400px;
+	animation: twinkle 6s steps(6) infinite alternate-reverse;
+}
+
+/* Em páginas com texto longo, estrelas mais discretas para não atrapalhar a leitura */
+body:has(.prose)::before,
+body:has(.prose)::after {
+	filter: brightness(0.45);
+}
+
+
+/* 4. Utilitários
+   ========================================================================== */
+
+.container {
+	width: min(100% - 2rem, var(--container));
+	margin-inline: auto;
+}
+
+@media (min-width: 720px) {
+	.container {
+		width: min(100% - 4rem, var(--container));
+	}
+}
+
+.sr-only {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.skip-link {
+	position: absolute;
+	top: -100px;
+	left: 1rem;
+	z-index: 100;
+	padding: 0.75rem 1rem;
+	font-family: var(--font-pixel);
+	font-size: 0.625rem;
+	color: #1a1200;
+	background: var(--yellow);
+}
+
+.skip-link:focus {
+	top: 1rem;
+}
+
+/* Screenshots em pixel art: ampliam sem borrar */
+.pixel {
+	image-rendering: pixelated;
+}
+
+/* Linhas e vinheta de TV de tubo (CRT) por cima de imagens */
+.crt {
+	position: relative;
+}
+
+.crt::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	pointer-events: none;
+	background:
+		repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px),
+		radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+	transition: opacity 0.3s;
+}
+
+
+/* 5. Cabeçalho e rodapé
+   ========================================================================== */
+
+.site-header {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	background: rgba(8, 9, 26, 0.82);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+}
+
+.site-header__inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	min-height: var(--header-h);
+}
+
+/* Faixa com as 4 cores do Super Nintendo */
+.snes-stripe {
+	height: 4px;
+	background: linear-gradient(90deg,
+		var(--red) 0 25%,
+		var(--yellow) 25% 50%,
+		var(--green) 50% 75%,
+		var(--blue) 75% 100%);
+}
+
+.logo {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.7rem;
+	text-decoration: none;
+}
+
+.logo__mark {
+	flex: none;
+	width: 28px;
+	height: 28px;
+}
+
+/* Letras amarelas com listras, como no logo original */
+.logo__text {
+	padding-top: 2px;
+	font-family: var(--font-pixel);
+	font-size: 1rem;
+	line-height: 1;
+	color: #fff35c;
+	background: repeating-linear-gradient(180deg, #fff35c 0 3px, #c9b800 3px 4px);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	filter: drop-shadow(2px 2px 0 #2b2000);
+}
+
+.site-nav {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.site-nav a {
+	position: relative;
+	padding: 0.75rem 0.6rem 0.75rem 1.4rem;
+	font-family: var(--font-pixel);
+	font-size: 0.6875rem;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: var(--text);
+}
+
+.site-nav a::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 0.4rem;
+	width: 8px;
+	height: 14px;
+	margin-top: -7px;
+	background: currentColor;
+	-webkit-mask: var(--icon-cursor) center / contain no-repeat;
+	mask: var(--icon-cursor) center / contain no-repeat;
+	opacity: 0;
+}
+
+.site-nav a:hover {
+	color: var(--yellow);
+}
+
+.site-nav a:hover::before {
+	opacity: 1;
+	animation: nudge 0.6s steps(2) infinite;
+}
+
+@media (max-width: 479px) {
+	:root {
+		--header-h: 60px;
+	}
+
+	.logo {
+		gap: 0.5rem;
+	}
+
+	.logo__mark {
+		width: 22px;
+		height: 22px;
+	}
+
+	.logo__text {
+		font-size: 0.75rem;
+	}
+
+	.site-nav a {
+		padding: 0.6rem 0.35rem 0.6rem 1.1rem;
+		font-size: 0.5625rem;
+	}
+
+	.site-nav a::before {
+		left: 0.2rem;
+	}
+}
+
+.site-footer {
+	margin-top: 5rem;
+	background: rgba(6, 7, 24, 0.85);
+}
+
+.site-footer__inner {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem 2rem;
+	padding-block: 2rem 2.25rem;
+	font-size: 0.9375rem;
+	color: var(--muted);
+}
+
+.site-footer p {
+	margin: 0;
+}
+
+.site-footer .logo__mark {
+	width: 20px;
+	height: 20px;
+}
+
+.site-footer .logo__text {
+	font-size: 0.75rem;
+}
+
+
+/* 6. Botões, janelas e etiquetas
+   ========================================================================== */
+
+/* Botão "de cartucho": relevo em pixel e borda serrilhada */
+.btn {
+	--btn-bg: var(--yellow);
+	--btn-fg: #231800;
+	--btn-light: #fff0a8;
+	--btn-dark: #c99400;
+	--btn-edge: #000;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.8rem;
+	margin: var(--px);
+	padding: 1.05rem 1.4rem 0.95rem;
+	font-family: var(--font-pixel);
+	font-size: 0.75rem;
+	line-height: 1.5;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: var(--btn-fg);
+	background: var(--btn-bg);
+	border: 0;
+	cursor: pointer;
+	box-shadow:
+		inset calc(var(--px) * -1) calc(var(--px) * -1) 0 var(--btn-dark),
+		inset var(--px) var(--px) 0 var(--btn-light),
+		0 calc(var(--px) * -1) 0 var(--btn-edge),
+		0 var(--px) 0 var(--btn-edge),
+		calc(var(--px) * -1) 0 0 var(--btn-edge),
+		var(--px) 0 0 var(--btn-edge);
+}
+
+.btn:hover {
+	color: var(--btn-fg);
+	filter: brightness(1.08);
+}
+
+.btn:active {
+	transform: translateY(2px);
+	box-shadow:
+		inset var(--px) var(--px) 0 var(--btn-dark),
+		0 calc(var(--px) * -1) 0 var(--btn-edge),
+		0 var(--px) 0 var(--btn-edge),
+		calc(var(--px) * -1) 0 0 var(--btn-edge),
+		var(--px) 0 0 var(--btn-edge);
+}
+
+/* Seta para baixo no botão de download */
+.btn--download::before {
+	content: "";
+	width: 8px;
+	height: 14px;
+	background: currentColor;
+	-webkit-mask: var(--icon-cursor) center / contain no-repeat;
+	mask: var(--icon-cursor) center / contain no-repeat;
+	rotate: 90deg;
+}
+
+.btn--block {
+	display: flex;
+	width: calc(100% - var(--px) * 2);
+}
+
+.btn--disabled,
+.btn--disabled:hover {
+	--btn-bg: repeating-linear-gradient(-45deg, #1d2152 0 8px, #171a45 8px 16px);
+	--btn-fg: #9499cc;
+	--btn-light: #2a2f6c;
+	--btn-dark: #0e1033;
+	cursor: not-allowed;
+	filter: none;
+}
+
+.btn--disabled:active {
+	transform: none;
+}
+
+/* Janela azul clássica dos RPGs de 16 bits */
+.rpg-window {
+	position: relative;
+	padding: 1.4rem 1.5rem;
+	color: #fff;
+	background: linear-gradient(180deg, var(--win-top) 0%, var(--win-mid) 45%, var(--win-bottom) 100%);
+	border: 3px solid var(--win-border);
+	border-radius: 8px;
+	box-shadow:
+		0 0 0 3px var(--win-outline),
+		inset 0 0 0 3px var(--win-outline),
+		0 24px 50px -16px rgba(0, 0, 0, 0.7);
+}
+
+.window-title {
+	margin: 0 0 1rem;
+	font-family: var(--font-pixel);
+	font-size: 0.75rem;
+	line-height: 1;
+	text-transform: uppercase;
+	color: var(--yellow);
+}
+
+/* Lista estilo menu de RPG: a seta aparece no item selecionado */
+.menu {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.menu a {
+	position: relative;
+	display: block;
+	padding: 0.3rem 0.25rem 0.3rem 1.4rem;
+	font-family: var(--font-term);
+	font-size: 1.375rem;
+	line-height: 1.15;
+	text-decoration: none;
+	color: #fff;
+	break-inside: avoid;
+}
+
+.menu a::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 0.3rem;
+	width: 8px;
+	height: 14px;
+	margin-top: -7px;
+	background: currentColor;
+	-webkit-mask: var(--icon-cursor) center / contain no-repeat;
+	mask: var(--icon-cursor) center / contain no-repeat;
+	opacity: 0;
+}
+
+.menu a:hover,
+.menu a[aria-current] {
+	color: var(--yellow);
+}
+
+.menu a:hover::before,
+.menu a[aria-current]::before {
+	opacity: 1;
+}
+
+.menu a:hover::before {
+	animation: nudge 0.6s steps(2) infinite;
+}
+
+.menu small {
+	font-size: 1em;
+	color: #a9b6ff;
+}
+
+/* Console do jogo: uma "aba" presa na borda de cima do card */
+.platform {
+	position: absolute;
+	top: -12px;
+	left: 1rem;
+	z-index: 2;
+	padding: 0.45rem 0.5rem 0.4rem;
+	font-family: var(--font-pixel);
+	font-size: 0.5rem;
+	line-height: 1;
+	letter-spacing: 0.04em;
+	color: #fff;
+	background: #5b45d6;
+	box-shadow: 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000, 2px 0 0 #000;
+}
+
+.platform--md {
+	color: #ff4a4a;
+	background: #0d0d0d;
+}
+
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tag {
+	padding: 0.3rem 0.5rem 0.2rem;
+	font-family: var(--font-term);
+	font-size: 1.125rem;
+	line-height: 1;
+	color: var(--cyan);
+	background: rgba(94, 231, 255, 0.08);
+	border: 2px solid rgba(94, 231, 255, 0.35);
+}
+
+.tag--lang {
+	color: var(--yellow);
+	background: rgba(255, 210, 63, 0.08);
+	border-color: rgba(255, 210, 63, 0.4);
+}
+
+.status {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-family: var(--font-term);
+	font-size: 1.25rem;
+	line-height: 1;
+	white-space: nowrap;
+}
+
+.status::before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	background: currentColor;
+	box-shadow: 0 0 10px currentColor;
+}
+
+.status--live {
+	color: var(--green);
+}
+
+.status--live::before {
+	animation: blink 1.2s steps(1) infinite;
+}
+
+.status--soon {
+	color: var(--yellow);
+}
+
+
+/* 7. Página inicial
+   ========================================================================== */
+
+.hero {
+	position: relative;
+	isolation: isolate;
+	display: flex;
+	align-items: flex-end;
+	min-height: min(calc(100vh - var(--header-h) - 4px), 860px);
+	padding: 6rem 0 3rem;
+	overflow: hidden;
+}
+
+/* Imagem de fundo que se dissolve no céu estrelado da página */
+.hero__bg {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background: url("../../images/back.jpg") center top / cover no-repeat;
+	-webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+	mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+}
+
+.hero__bg::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background:
+		repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 3px),
+		linear-gradient(180deg, rgba(10, 11, 30, 0) 35%, rgba(10, 11, 30, 0.7) 80%);
+}
+
+.hero__content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.75rem;
+	text-align: center;
+}
+
+/* Caixa de diálogo de RPG */
+.dialog {
+	width: min(100%, 780px);
+	padding: 1.9rem 2rem 2.1rem;
+	text-align: left;
+}
+
+.dialog__name {
+	position: absolute;
+	top: 0;
+	left: 1.5rem;
+	margin: 0;
+	padding: 0.6rem 0.8rem 0.5rem;
+	font-family: var(--font-pixel);
+	font-size: 0.75rem;
+	line-height: 1;
+	color: var(--yellow);
+	background: var(--win-outline);
+	border: 3px solid var(--win-border);
+	border-radius: 6px;
+	transform: translateY(-62%);
+}
+
+.dialog__text {
+	position: relative;
+	margin: 0;
+	font-family: var(--font-term);
+	font-size: clamp(1.4rem, 1.1rem + 1vw, 1.85rem);
+	line-height: 1.3;
+}
+
+/* Efeito máquina de escrever (ver assets/js/site.js) */
+.tw-ghost {
+	visibility: hidden;
+}
+
+.tw-live {
+	position: absolute;
+	inset: 0;
+}
+
+.dialog__next {
+	position: absolute;
+	right: 1.25rem;
+	bottom: 0.6rem;
+	width: 10px;
+	height: 18px;
+	background: #fff;
+	-webkit-mask: var(--icon-cursor) center / contain no-repeat;
+	mask: var(--icon-cursor) center / contain no-repeat;
+	rotate: 90deg;
+	animation: bob 0.8s steps(2) infinite;
+}
+
+.dialog.is-typing .dialog__next {
+	visibility: hidden;
+}
+
+.press-start {
+	padding: 0.5rem;
+	font-family: var(--font-pixel);
+	font-size: 0.875rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #fff;
+	text-shadow: 3px 3px 0 #000;
+	animation: blink 1.2s steps(1) infinite;
+}
+
+.press-start:hover {
+	color: var(--yellow);
+	animation: none;
+}
+
+@media (max-width: 719px) {
+	.hero {
+		min-height: 0;
+		padding-top: 88vw;
+	}
+
+	.hero__bg {
+		background-size: 260% auto;
+	}
+
+	.dialog {
+		padding: 1.75rem 1.25rem 2rem;
+	}
+}
+
+.section {
+	padding: 4.5rem 0 1rem;
+}
+
+@media (max-width: 719px) {
+	.section {
+		padding-top: 2.5rem;
+	}
+}
+
+.section-head {
+	margin-bottom: 3rem;
+	text-align: center;
+}
+
+.eyebrow {
+	margin: 0 0 0.6rem;
+	font-family: var(--font-term);
+	font-size: 1.375rem;
+	line-height: 1;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--cyan);
+}
+
+.section-title {
+	margin: 0;
+	font-family: var(--font-pixel);
+	font-size: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+	line-height: 1.3;
+	color: #fff;
+	text-shadow: 4px 4px 0 #000, 0 0 30px rgba(77, 124, 255, 0.55);
+}
+
+/* Cards dos jogos */
+.cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 2.25rem 1.75rem;
+}
+
+.card {
+	--edge: var(--line-2);
+	--glow: 0 0 0 0 transparent;
+	position: relative;
+	display: flex;
+	flex: 1 1 240px;
+	flex-direction: column;
+	max-width: 360px;
+	margin: var(--px);
+	text-decoration: none;
+	color: var(--text);
+	background: linear-gradient(180deg, var(--panel-2) 0%, var(--panel) 100%);
+	box-shadow:
+		0 calc(var(--px) * -1) 0 0 var(--edge),
+		0 var(--px) 0 0 var(--edge),
+		calc(var(--px) * -1) 0 0 0 var(--edge),
+		var(--px) 0 0 0 var(--edge),
+		var(--glow);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover,
+.card:focus-visible {
+	--edge: var(--yellow);
+	--glow: 0 22px 40px -14px rgba(255, 210, 63, 0.35);
+	color: var(--text);
+	transform: translateY(-6px);
+}
+
+.card:focus-visible {
+	outline-offset: 10px;
+}
+
+.card__screen {
+	aspect-ratio: 8 / 7;
+	overflow: hidden;
+	background: #000;
+}
+
+.card__screen img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s ease;
+}
+
+.card:hover .card__screen img {
+	transform: scale(1.06);
+}
+
+.card:hover .crt::after {
+	opacity: 0.35;
+}
+
+.card__body {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 0.8rem;
+	padding: 1.3rem 1.25rem 1.15rem;
+}
+
+.card__kicker {
+	margin: 0;
+	font-family: var(--font-term);
+	font-size: 1.3rem;
+	line-height: 1;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--green);
+}
+
+.card__title {
+	margin: 0;
+	font-family: var(--font-pixel);
+	font-size: 1rem;
+	line-height: 1.45;
+	color: #fff;
+}
+
+.card:hover .card__title {
+	color: var(--yellow);
+}
+
+.card__desc {
+	margin: 0;
+	font-size: 0.95rem;
+	line-height: 1.6;
+	color: var(--muted);
+}
+
+.card__foot {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	margin-top: auto;
+	padding-top: 1rem;
+	border-top: 2px dashed var(--line);
+}
+
+.card__cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	font-family: var(--font-pixel);
+	font-size: 0.5625rem;
+	text-transform: uppercase;
+	white-space: nowrap;
+	color: var(--yellow);
+}
+
+.card__cta::after {
+	content: "";
+	width: 6px;
+	height: 10px;
+	background: currentColor;
+	-webkit-mask: var(--icon-cursor) center / contain no-repeat;
+	mask: var(--icon-cursor) center / contain no-repeat;
+}
+
+.card:hover .card__cta::after {
+	animation: nudge 0.6s steps(2) infinite;
+}
+
+/* Seta de seleção apontando para o card, como num menu de RPG */
+@media (hover: hover) and (min-width: 720px) {
+	.card::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: -32px;
+		width: 12px;
+		height: 21px;
+		margin-top: -10px;
+		background: var(--yellow);
+		-webkit-mask: var(--icon-cursor) center / contain no-repeat;
+		mask: var(--icon-cursor) center / contain no-repeat;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.card:hover::before {
+		opacity: 1;
+		animation: nudge 0.5s steps(2) infinite;
+	}
+}
+
+/* Card de destaque (ocupa a linha inteira) */
+.card--featured {
+	flex-basis: 100%;
+	max-width: none;
+}
+
+.card--featured .card__screen {
+	aspect-ratio: 2 / 1;
+}
+
+.card--featured .card__screen img {
+	object-position: right center;
+}
+
+.card--featured .card__title {
+	font-size: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);
+}
+
+.card--featured .card__desc {
+	max-width: 52ch;
+	font-size: 1.05rem;
+}
+
+@media (min-width: 860px) {
+	.card--featured {
+		flex-direction: row;
+	}
+
+	.card--featured .card__screen {
+		flex: 0 0 54%;
+		min-height: 340px;
+		aspect-ratio: auto;
+	}
+
+	.card--featured .card__body {
+		justify-content: center;
+		gap: 1.1rem;
+		padding: 2.25rem 2.25rem 2rem;
+	}
+}
+
+
+/* 8. Páginas de projeto
+   ========================================================================== */
+
+.page {
+	padding-top: 1.5rem;
+}
+
+.back-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+	padding: 0.5rem 0;
+	font-family: var(--font-pixel);
+	font-size: 0.625rem;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: var(--muted);
+}
+
+.back-link::before {
+	content: "";
+	width: 6px;
+	height: 10px;
+	background: currentColor;
+	-webkit-mask: var(--icon-cursor) center / contain no-repeat;
+	mask: var(--icon-cursor) center / contain no-repeat;
+	rotate: 180deg;
+}
+
+.back-link:hover {
+	color: var(--yellow);
+}
+
+/* Arte do jogo no topo, com um brilho colorido atrás */
+.banner {
+	position: relative;
+	isolation: isolate;
+	margin: 1.25rem 0 2.75rem;
+}
+
+.banner__glow {
+	position: absolute;
+	inset: 8% 4%;
+	z-index: -1;
+	background: center / cover no-repeat;
+	filter: blur(56px) saturate(1.6);
+	opacity: 0.55;
+}
+
+.banner__frame {
+	--edge: var(--line-2);
+	margin: var(--px);
+	overflow: hidden;
+	background: #000;
+	box-shadow:
+		0 calc(var(--px) * -1) 0 0 var(--edge),
+		0 var(--px) 0 0 var(--edge),
+		calc(var(--px) * -1) 0 0 0 var(--edge),
+		var(--px) 0 0 0 var(--edge),
+		0 30px 60px -24px rgba(0, 0, 0, 0.8);
+}
+
+.banner__frame img {
+	width: 100%;
+	max-height: 500px;
+	object-fit: cover;
+}
+
+/* Variação para logos com fundo transparente */
+.banner--logo .banner__frame {
+	margin: 0;
+	padding: 1rem 0;
+	overflow: visible;
+	background: none;
+	box-shadow: none;
+}
+
+.banner--logo .banner__frame::after {
+	display: none;
+}
+
+.banner--logo .banner__frame img {
+	width: min(100%, 560px);
+	max-height: none;
+	margin-inline: auto;
+	object-fit: contain;
+	filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.65));
+}
+
+.project-head {
+	display: grid;
+	align-items: start;
+	gap: 2.5rem;
+	margin-bottom: 4rem;
+}
+
+@media (min-width: 900px) {
+	.project-head {
+		grid-template-columns: minmax(0, 1fr) 360px;
+		gap: 3rem;
+	}
+}
+
+.project-title {
+	margin: 0 0 1.25rem;
+	font-family: var(--font-pixel);
+	font-size: clamp(1.5rem, 1rem + 2.4vw, 2.5rem);
+	line-height: 1.3;
+	color: #fff;
+	text-shadow: 4px 4px 0 #000;
+}
+
+.project-lead {
+	margin: 0 0 1rem;
+	font-size: 1.1875rem;
+	line-height: 1.65;
+}
+
+.project-head p:not(.project-lead) {
+	max-width: 62ch;
+	color: var(--muted);
+}
+
+/* Ficha do projeto, como a tela de status de um RPG */
+.ficha {
+	padding: 1.6rem 1.5rem 1.5rem;
+}
+
+.stats {
+	display: grid;
+	gap: 0.3rem;
+	margin: 0 0 1.4rem;
+	font-family: var(--font-term);
+	font-size: 1.4rem;
+	line-height: 1.2;
+}
+
+.stats > div {
+	display: flex;
+	align-items: baseline;
+	gap: 0.5rem;
+}
+
+.stats dt {
+	display: flex;
+	flex: 1;
+	align-items: baseline;
+	gap: 0.5rem;
+	color: #b8c3ff;
+}
+
+.stats dt::after {
+	content: "";
+	flex: 1;
+	min-width: 1rem;
+	border-bottom: 2px dotted rgba(255, 255, 255, 0.35);
+}
+
+.stats dd {
+	margin: 0;
+	text-align: right;
+}
+
+.stats .is-live {
+	color: var(--green);
+}
+
+.ficha .menu {
+	margin-top: 1rem;
+}
+
+/* Índice lateral (página do Star Ocean) */
+.layout {
+	display: grid;
+	align-items: start;
+	gap: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+	.layout {
+		grid-template-columns: 250px minmax(0, 1fr);
+		gap: 3.5rem;
+	}
+
+	.toc {
+		position: sticky;
+		top: calc(var(--header-h) + 1.5rem);
+	}
+}
+
+.toc {
+	padding: 1.25rem 1rem 1rem;
+}
+
+.toc .window-title {
+	margin-left: 0.35rem;
+}
+
+@media (min-width: 560px) and (max-width: 1023px) {
+	.toc ol {
+		columns: 2;
+		column-gap: 1.5rem;
+	}
+}
+
+
+/* 9. Texto longo
+   ========================================================================== */
+
+.prose {
+	min-width: 0;
+}
+
+.prose > section + section {
+	margin-top: 3.5rem;
+}
+
+.prose p,
+.prose ul,
+.prose ol {
+	max-width: 70ch;
+	margin: 0 0 1.15em;
+}
+
+.prose h2,
+.heading-bar {
+	margin: 0 0 1.4rem;
+	padding: 0.95rem 1.1rem 0.85rem;
+	font-family: var(--font-pixel);
+	font-size: clamp(0.875rem, 0.8rem + 0.35vw, 1.0625rem);
+	font-weight: normal;
+	line-height: 1.55;
+	color: #fff;
+	background: linear-gradient(90deg, rgba(61, 220, 132, 0.24), rgba(61, 220, 132, 0) 85%);
+	border-left: 6px solid var(--green);
+}
+
+.prose h3 {
+	margin: 2.25rem 0 0.9rem;
+	font-family: var(--font-pixel);
+	font-size: 0.8125rem;
+	font-weight: normal;
+	line-height: 1.6;
+	color: var(--cyan);
+}
+
+.prose a {
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+}
+
+.prose strong {
+	font-weight: 700;
+	color: #fff;
+}
+
+.prose code {
+	font-family: var(--font-term);
+	font-size: 1.25em;
+	line-height: 1;
+	color: var(--cyan);
+}
+
+.prose .hl-red {
+	color: var(--red);
+}
+
+.table-wrap {
+	max-width: 70ch;
+	margin: 1.5rem 0 1.75rem;
+	overflow-x: auto;
+	background: rgba(18, 21, 58, 0.65);
+	border: 3px solid var(--line-2);
+}
+
+.table-wrap table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.975rem;
+	line-height: 1.5;
+}
+
+.table-wrap th {
+	padding: 0.95rem 1rem 0.8rem;
+	font-family: var(--font-pixel);
+	font-size: 0.625rem;
+	font-weight: normal;
+	letter-spacing: 0.04em;
+	text-align: left;
+	text-transform: uppercase;
+	color: var(--yellow);
+	background: var(--panel-2);
+	border-bottom: 3px solid var(--line-2);
+}
+
+.table-wrap td {
+	padding: 0.7rem 1rem;
+	vertical-align: top;
+	border-top: 2px solid var(--line);
+}
+
+.table-wrap tbody tr:first-child td {
+	border-top: 0;
+}
+
+.table-wrap tbody tr:nth-child(even) td {
+	background: rgba(255, 255, 255, 0.025);
+}
+
+.table-wrap td code {
+	white-space: nowrap;
+}
+
+/* No celular, "table-wrap--stack" mostra cada linha empilhada */
+@media (max-width: 559px) {
+	.table-wrap--stack thead {
+		display: none;
+	}
+
+	.table-wrap--stack tr {
+		display: block;
+		padding: 0.75rem 1rem;
+		border-top: 2px solid var(--line);
+	}
+
+	.table-wrap--stack tbody tr:first-child {
+		border-top: 0;
+	}
+
+	.table-wrap--stack tbody tr:nth-child(even) {
+		background: rgba(255, 255, 255, 0.025);
+	}
+
+	.table-wrap--stack td,
+	.table-wrap--stack tbody tr:nth-child(even) td {
+		display: block;
+		padding: 0;
+		background: none;
+		border: 0;
+	}
+}
+
+.figure {
+	margin: 1.5rem 0 1.75rem;
+}
+
+.figure img {
+	border: 3px solid var(--line-2);
+}
+
+.figure--small img {
+	width: min(100%, 504px);
+}
+
+
+/* 10. Galeria e visualizador de imagens
+   ========================================================================== */
+
+/* Imagens que sobram na última linha ficam centralizadas */
+.gallery {
+	--cols: 2;
+	--gap: 0.9rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--gap);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.gallery li {
+	flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+	min-width: 0;
+}
+
+@media (min-width: 720px) {
+	.gallery {
+		--cols: 3;
+		--gap: 1.25rem;
+	}
+}
+
+.gallery a {
+	--edge: var(--line-2);
+	display: block;
+	margin: var(--px);
+	overflow: hidden;
+	background: #000;
+	cursor: zoom-in;
+	box-shadow:
+		0 calc(var(--px) * -1) 0 0 var(--edge),
+		0 var(--px) 0 0 var(--edge),
+		calc(var(--px) * -1) 0 0 0 var(--edge),
+		var(--px) 0 0 0 var(--edge);
+}
+
+.gallery a:hover,
+.gallery a:focus-visible {
+	--edge: var(--yellow);
+}
+
+.gallery img {
+	width: 100%;
+	transition: transform 0.4s ease;
+}
+
+.gallery a:hover img {
+	transform: scale(1.05);
+}
+
+.gallery a:hover::after {
+	opacity: 0.3;
+}
+
+/* Visualizador (criado pelo assets/js/site.js) */
+.lightbox {
+	width: 100%;
+	height: 100%;
+	max-width: none;
+	max-height: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	color: #fff;
+	background: rgba(5, 6, 20, 0.94);
+	border: 0;
+}
+
+.lightbox[open] {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.lightbox::backdrop {
+	background: rgba(5, 6, 20, 0.6);
+}
+
+.lightbox__figure {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.1rem;
+	margin: 0;
+}
+
+.lightbox__img {
+	max-width: none;
+	background: #000;
+	box-shadow:
+		0 0 0 4px var(--win-border),
+		0 0 0 8px var(--win-outline),
+		0 30px 80px rgba(0, 0, 0, 0.7);
+}
+
+.lightbox__caption {
+	font-family: var(--font-term);
+	font-size: 1.5rem;
+	line-height: 1;
+	color: var(--muted);
+}
+
+.lightbox__btn {
+	--edge: var(--line-2);
+	position: absolute;
+	display: grid;
+	place-items: center;
+	width: 52px;
+	height: 52px;
+	padding: 0;
+	font-family: var(--font-pixel);
+	font-size: 0.875rem;
+	color: #fff;
+	background: var(--panel);
+	border: 0;
+	cursor: pointer;
+	box-shadow:
+		0 calc(var(--px) * -1) 0 0 var(--edge),
+		0 var(--px) 0 0 var(--edge),
+		calc(var(--px) * -1) 0 0 0 var(--edge),
+		var(--px) 0 0 0 var(--edge);
+}
+
+.lightbox__btn:hover,
+.lightbox__btn:focus-visible {
+	--edge: var(--yellow);
+	color: var(--yellow);
+}
+
+.lightbox__close {
+	top: 1.25rem;
+	right: 1.25rem;
+}
+
+.lightbox__prev,
+.lightbox__next {
+	top: 50%;
+	margin-top: -26px;
+}
+
+.lightbox__prev {
+	left: 1.25rem;
+}
+
+.lightbox__next {
+	right: 1.25rem;
+}
+
+.lightbox__prev::before,
+.lightbox__next::before {
+	content: "";
+	width: 12px;
+	height: 21px;
+	background: currentColor;
+	-webkit-mask: var(--icon-cursor) center / contain no-repeat;
+	mask: var(--icon-cursor) center / contain no-repeat;
+}
+
+.lightbox__prev::before {
+	rotate: 180deg;
+}
+
+@media (max-width: 719px) {
+	.lightbox__prev,
+	.lightbox__next {
+		top: auto;
+		bottom: 1.25rem;
+		margin-top: 0;
+	}
+}
+
+body:has(.lightbox[open]) {
+	overflow: hidden;
+}
+
+
+/* 11. Página 404
+   ========================================================================== */
+
+.game-over {
+	display: grid;
+	place-content: center;
+	justify-items: center;
+	gap: 1.5rem;
+	padding: 6rem 1rem 2rem;
+	text-align: center;
+}
+
+.game-over__title {
+	margin: 0;
+	font-family: var(--font-pixel);
+	font-size: clamp(2rem, 1rem + 6vw, 4.5rem);
+	line-height: 1.2;
+	color: var(--red);
+	text-shadow: 6px 6px 0 #000;
+}
+
+.game-over__text {
+	max-width: 40ch;
+	margin: 0 0 1rem;
+	color: var(--muted);
+}
+
+
+/* 12. Animações
+   ========================================================================== */
+
+@keyframes twinkle {
+	from {
+		opacity: 0.35;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes blink {
+	50% {
+		opacity: 0.15;
+	}
+}
+
+@keyframes nudge {
+	50% {
+		translate: 3px 0;
+	}
+}
+
+@keyframes bob {
+	50% {
+		translate: 0 3px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation: none !important;
+		transition: none !important;
+	}
+}
