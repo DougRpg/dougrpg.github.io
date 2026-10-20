@@ -1113,6 +1113,32 @@ body:has(.prose)::after {
 	filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.65));
 }
 
+/* Variação para capas em pé ou quadradas: a capa fica no centro, sobre um fundo desfocado dela mesma */
+.banner--poster .banner__frame {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: clamp(280px, 42vw, 480px);
+	padding: 1.25rem 0;
+}
+
+.banner__backdrop {
+	position: absolute;
+	inset: -40px;
+	background: center / cover no-repeat;
+	filter: blur(24px) brightness(0.5) saturate(1.4);
+}
+
+.banner--poster .banner__frame img {
+	position: relative;
+	width: auto;
+	max-width: 100%;
+	height: 100%;
+	max-height: none;
+	object-fit: contain;
+	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15), 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+
 .project-head {
 	display: grid;
 	align-items: start;
@@ -1193,6 +1219,10 @@ body:has(.prose)::after {
 
 .stats .is-live {
 	color: var(--green);
+}
+
+.stats .is-soon {
+	color: var(--yellow);
 }
 
 .ficha .menu {
