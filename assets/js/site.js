@@ -2,6 +2,11 @@
 (() => {
 	const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+	/* Textos da interface no idioma da página (<html lang="en"> usa os em inglês) */
+	const text = document.documentElement.lang.startsWith('en')
+		? { viewer: 'Image viewer', close: 'Close', prev: 'Previous image', next: 'Next image', visitors: 'Visitors', locale: 'en-US' }
+		: { viewer: 'Visualizador de imagens', close: 'Fechar', prev: 'Imagem anterior', next: 'Próxima imagem', visitors: 'Visitantes', locale: 'pt-BR' };
+
 	/* Ano atual no rodapé */
 	document.querySelectorAll('[data-year]').forEach((el) => {
 		el.textContent = new Date().getFullYear();
@@ -44,22 +49,23 @@
 		box.addEventListener('click', finish);
 	});
 
-	/* Galeria: abre as screenshots ampliadas.
+	/* Galeria: abre as screenshots ampliadas e navega dentro da galeria clicada.
 	   Teclado: setas para navegar, Esc para fechar. */
 	const shots = [...document.querySelectorAll('[data-lightbox]')];
+	let group = shots; // as imagens da galeria aberta
 
 	if (shots.length && typeof HTMLDialogElement === 'function') {
 		const dialog = document.createElement('dialog');
 		dialog.className = 'lightbox';
-		dialog.setAttribute('aria-label', 'Visualizador de imagens');
+		dialog.setAttribute('aria-label', text.viewer);
 		dialog.innerHTML = `
 			<figure class="lightbox__figure">
 				<img class="lightbox__img" alt="">
 				<figcaption class="lightbox__caption"></figcaption>
 			</figure>
-			<button type="button" class="lightbox__btn lightbox__close" aria-label="Fechar">X</button>
-			<button type="button" class="lightbox__btn lightbox__prev" aria-label="Imagem anterior"></button>
-			<button type="button" class="lightbox__btn lightbox__next" aria-label="Próxima imagem"></button>`;
+			<button type="button" class="lightbox__btn lightbox__close" aria-label="${text.close}">X</button>
+			<button type="button" class="lightbox__btn lightbox__prev" aria-label="${text.prev}"></button>
+			<button type="button" class="lightbox__btn lightbox__next" aria-label="${text.next}"></button>`;
 		document.body.append(dialog);
 
 		const img = dialog.querySelector('.lightbox__img');
@@ -79,13 +85,13 @@
 		};
 
 		const show = (index) => {
-			current = (index + shots.length) % shots.length;
-			const link = shots[current];
+			current = (index + group.length) % group.length;
+			const link = group[current];
 			const thumb = link.querySelector('img');
 			img.classList.toggle('pixel', Boolean(thumb && thumb.classList.contains('pixel')));
 			img.alt = thumb ? thumb.alt : '';
 			img.src = link.href;
-			caption.textContent = `${current + 1} / ${shots.length}`;
+			caption.textContent = `${current + 1} / ${group.length}`;
 			if (img.complete) fit();
 		};
 
@@ -94,10 +100,12 @@
 			if (dialog.open) fit();
 		});
 
-		shots.forEach((link, index) => {
+		shots.forEach((link) => {
 			link.addEventListener('click', (event) => {
 				event.preventDefault();
-				show(index);
+				const gallery = link.closest('.gallery');
+				group = gallery ? [...gallery.querySelectorAll('[data-lightbox]')] : [link];
+				show(group.indexOf(link));
 				dialog.showModal();
 			});
 		});
@@ -112,7 +120,7 @@
 			if (event.key === 'ArrowLeft') show(current - 1);
 			if (event.key === 'ArrowRight') show(current + 1);
 		});
-		dialog.addEventListener('close', () => shots[current].focus());
+		dialog.addEventListener('close', () => group[current].focus());
 	}
 
 	/* Contador de visitas no rodapé: total do site no GoatCounter.
@@ -129,9 +137,9 @@
 				if (!digits) return;
 				const cells = [...digits.padStart(6, '0')].map((d) => `<span>${d}</span>`).join('');
 				counter.innerHTML = `
-					<span aria-hidden="true">Visitantes</span>
+					<span aria-hidden="true">${text.visitors}</span>
 					<span class="hit-counter__digits" aria-hidden="true">${cells}</span>
-					<span class="sr-only">${Number(digits).toLocaleString('pt-BR')} visitantes</span>`;
+					<span class="sr-only">${Number(digits).toLocaleString(text.locale)} ${text.visitors.toLowerCase()}</span>`;
 				counter.hidden = false;
 			})
 			.catch(() => { /* se o GoatCounter não responder, o contador continua escondido */ });

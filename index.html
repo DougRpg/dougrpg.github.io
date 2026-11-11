@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>DougRPG — Projetos de tradução de jogos</title>
-	<meta name="description" content="Projetos de tradução de jogos antigos de Super Nintendo e Mega Drive: Star Ocean, Phantasy Star IV, Tengai Makyou Zero, Shadowrun, Cadash e Arabian Nights.">
+	<meta name="description" content="Projetos de tradução de jogos antigos de Super Nintendo e Mega Drive: Star Ocean, Traverse, Phantasy Star IV, Tengai Makyou Zero, Shadowrun, Cadash e Arabian Nights.">
 	<meta name="theme-color" content="#0a0b1e">
 	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="DougRPG">
@@ -68,16 +68,41 @@
 				<div class="cards">
 
 					<!-- Card de destaque (ocupa a linha inteira). Para destacar outro jogo,
-					     coloque a classe "card--featured" no card dele. -->
-					<a class="card card--featured" href="starocean.html">
+					     coloque a classe "card--featured" no card dele.
+					     Este é em inglês: o lang="en" faz o leitor de tela ler com a pronúncia certa.
+					     "card__screen--poster" deixa a screenshot inteira no centro, sobre um fundo desfocado. -->
+					<a class="card card--featured" href="traverse.html" lang="en">
 						<span class="platform">SNES</span>
-						<div class="card__screen crt">
-							<img src="images/starocean2.jpg" alt="Arte de Star Ocean com os personagens principais" width="1745" height="863">
+						<div class="card__screen card__screen--poster crt">
+							<div class="card__backdrop" style="background-image: url('images/traverse-en-title.png')" aria-hidden="true"></div>
+							<img class="pixel" src="images/traverse-en-title.png" alt="Traverse: Starlight &amp; Prairie title screen" width="256" height="224">
 						</div>
 						<div class="card__body">
-							<p class="card__kicker">Lançamento</p>
+							<p class="card__kicker">New release</p>
+							<h3 class="card__title">Traverse</h3>
+							<p class="card__desc">A classic RPG for the SNES that was only released in Japan, translated into English and Portuguese.</p>
+							<ul class="tags">
+								<li class="tag tag--lang">EN</li>
+								<li class="tag tag--lang">PT-BR</li>
+							</ul>
+							<div class="card__foot">
+								<span class="status status--live">Version 1.0.0 out now</span>
+								<span class="card__cta">View project</span>
+							</div>
+						</div>
+					</a>
+
+					<!-- Card de projeto: copie este bloco para adicionar um novo jogo.
+					     Plataforma: "platform" (SNES) ou "platform platform--md" (Mega Drive).
+					     Status: "status--live" (disponível) ou "status--soon" (em breve). -->
+					<a class="card" href="starocean.html">
+						<span class="platform">SNES</span>
+						<div class="card__screen crt">
+							<img class="pixel" src="images/starocean1.png" alt="Tela título de Star Ocean" width="256" height="224" loading="lazy">
+						</div>
+						<div class="card__body">
 							<h3 class="card__title">Star Ocean</h3>
-							<p class="card__desc">RPG maravilhoso da Enix para Snes. A tradução para o português já pode ser baixada na versão V1-BETA, 100% jogável do começo ao fim.</p>
+							<p class="card__desc">RPG maravilhoso da Enix para Snes.</p>
 							<ul class="tags">
 								<li class="tag">Chip S-DD1</li>
 								<li class="tag tag--lang">PT-BR</li>
@@ -89,9 +114,6 @@
 						</div>
 					</a>
 
-					<!-- Card de projeto: copie este bloco para adicionar um novo jogo.
-					     Plataforma: "platform" (SNES) ou "platform platform--md" (Mega Drive).
-					     Status: "status--live" (disponível) ou "status--soon" (em breve). -->
 					<a class="card" href="phantasystar4.html">
 						<span class="platform platform--md">MEGA DRIVE</span>
 						<div class="card__screen crt">

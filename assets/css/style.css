@@ -1005,6 +1005,29 @@ body:has(.prose)::after {
 	font-size: 1.05rem;
 }
 
+/* Screenshot no centro, sobre um fundo desfocado dela mesma (para telas de 8:7 no card de destaque) */
+.card__screen--poster {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.card__backdrop {
+	position: absolute;
+	inset: -30px;
+	background: center / cover no-repeat;
+	filter: blur(22px) brightness(0.55) saturate(1.4);
+}
+
+.card__screen--poster img,
+.card--featured .card__screen--poster img {
+	position: relative;
+	width: auto;
+	max-width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
 @media (min-width: 860px) {
 	.card--featured {
 		flex-direction: row;
@@ -1174,6 +1197,38 @@ body:has(.prose)::after {
 
 .project-head p:not(.project-lead) {
 	max-width: 62ch;
+	color: var(--muted);
+}
+
+/* Link de destaque no texto, com a seta de menu de RPG */
+.text-cta {
+	font-family: var(--font-pixel);
+	font-size: 0.6875rem;
+	line-height: 1.8;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+/* A seta acompanha a última palavra, mesmo quando o texto quebra linha */
+.text-cta::after {
+	content: "";
+	display: inline-block;
+	width: 6px;
+	height: 10px;
+	margin-left: 0.6rem;
+	vertical-align: -1px;
+	background: currentColor;
+	-webkit-mask: var(--icon-cursor) center / contain no-repeat;
+	mask: var(--icon-cursor) center / contain no-repeat;
+}
+
+.text-cta:hover::after {
+	animation: nudge 0.6s steps(2) infinite;
+}
+
+.section-note {
+	max-width: 70ch;
+	margin: 0 0 1.5rem;
 	color: var(--muted);
 }
 
