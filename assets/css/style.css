@@ -1005,6 +1005,11 @@ body:has(.prose)::after {
 	font-size: 1.05rem;
 }
 
+/* O card corta as laterais da screenshot; com esta classe, mostra o lado esquerdo (onde está o logo, por exemplo) */
+.card__screen--left img {
+	object-position: left center;
+}
+
 /* Screenshot no centro, sobre um fundo desfocado dela mesma (para telas de 8:7 no card de destaque) */
 .card__screen--poster {
 	display: flex;
@@ -1134,6 +1139,11 @@ body:has(.prose)::after {
 	margin-inline: auto;
 	object-fit: contain;
 	filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.65));
+}
+
+/* Logo em pixel art já ampliado: fica no tamanho natural, para os pixels saírem iguais */
+.banner--logo .banner__frame img.pixel {
+	width: auto;
 }
 
 /* Variação para capas em pé ou quadradas: a capa fica no centro, sobre um fundo desfocado dela mesma */
